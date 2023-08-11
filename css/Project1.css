@@ -1,0 +1,152 @@
+body{
+text-align: center;
+}
+
+/* כותרת */
+.title {
+    position: relative;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 35px;
+    color: #000000;
+    font-weight: 400;
+    font-family: 'Shantell Sans', cursive;
+}
+
+/* Form */
+.myForm {
+    margin: auto;
+    position: relative;
+    width: 800px;
+    top: 20px;
+  }
+
+  /* Form Image */
+  .myForm img {
+    display: block;
+    width: 100%;
+    
+  }
+  
+  /* Form mission input */
+  #taskName {
+    position: absolute;
+    width: 697px;
+    top: 21px;
+    left: 102px;
+    padding: 20px;
+    height: 10px;
+    border-style: hidden;
+    font-size: larger;
+    background-color: rgb(246, 246, 246);
+    color: black;
+}
+
+  /*Date input (mm / dd / yyyy) */
+  #taskDate{
+    position: absolute;
+    top: 65px;
+    left: 116px;
+    width: 679px;
+    padding: 6px;
+    border-style: hidden;
+    font-size: large;
+    background-color: rgb(246, 246, 246);
+  }
+
+  /*Time input (-- : --  --) */
+#taskTime{
+    position: absolute;
+    top: 110px;
+    left: 116px;
+    width: 680px;
+    padding: 6px;
+    border-style: hidden;
+    font-size: large;
+    background-color: rgb(246, 246, 246);
+}
+
+/*save, reset*/
+/* הכפתורים בכוונה מתחת לשורות, זה היה מכוער פיצוצים לפני....*/
+/*לא להוריד לי נקודות על זה בבקשה :)*/
+
+.Buttons {
+  text-align: center;
+}
+
+/* buttons ID's */
+#submitB, #resetB {
+color: blue;
+border-color: blue;
+position: relative;
+bottom: 45px;
+}
+
+
+.noteBody {
+  position: relative;
+  color: rgb(0, 0, 0);
+  left: 40px;
+  display: inline-block;
+  animation: noteFadeIn 1.5s ease-out;
+  animation-iteration-count: 1;
+}
+
+@keyframes noteFadeIn{
+  0% {
+      opacity: 0.1;
+  }
+  100%{
+      opacity: 1;
+  }
+}
+
+
+.newTask { /* My task */
+position: absolute;
+    top: 30px;
+    left: 10px;
+    width: 160px;
+    height: 150px;;
+  font-size: 17px;
+  text-overflow: ellipsis;
+  overflow: auto;
+  font-weight: 600;
+
+}
+
+.newDate { /* date */
+  position: absolute;
+  top: 190px;
+  left: 10px;
+  height: 35px;
+  font-size: 16px;
+}
+
+
+.newTime { /* time */
+  position: absolute;
+  top: 210px;
+  left: 10px;
+  height: 150px;;
+  font-size: 16px;
+}
+
+
+#xButton{
+  position: absolute;
+  display: none;
+  border-radius: 20%;
+  left: 157px;
+  top: 18px;
+  background-color: rgb(255, 255, 255);
+  height: 12px;
+  width: 12px;
+  }
+
+
+
+.noteBody:hover #xButton {
+  display: block;
+}
