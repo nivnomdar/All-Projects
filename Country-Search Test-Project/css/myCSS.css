@@ -1,0 +1,17 @@
+body {
+    text-align: center;
+    flex: auto;
+  }
+
+  .Box{
+  border: 10px black;
+  }
+
+
+  #totalCountries  {
+  color: orange;
+}
+
+span {
+  color: red;
+}
