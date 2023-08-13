@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="test.js"></script>
+    <link href="test.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="title">Add Product</div>
+    <hr>
+
+    <div class="Box">
+    <form action="javascript:getData()" id="form">
+
+    <input type="text" placeholder="Product Name" id="pName" required/>
+    <input type="number" placeholder="Product Price" id="pPrice" required/><br><br>
+    <select id="pSelect" required>
+          <option>Drinks</option>
+          <option>Meat</option>
+          <option>Dairy</option>
+          <option>Snacks</option>
+          <option>Basic</option>
+    </select><br><br>
+    <input type="url" placeholder="Photo Link" id="pUrl" required/><br><br>
+    <input type="submit" value="Add Product"/>
+    <input type="reset" value="reset"/>
+    </form></div>
+    <br><hr>
+
+    <div class="title">My Cart</div>
+    <br>
+
+    <table>
+        <thead>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Photo</th>
+        </thead>
+    
+        <tbody id="tableBody"></tbody>
+    </table>
+
+</body>
+</html>

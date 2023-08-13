@@ -1,0 +1,53 @@
+body{
+    text-align: center;
+    background-color: #b2b2b2;
+}
+
+.title{
+    font-size: xx-large;
+
+}
+
+.Box {
+    border: solid 1px black;
+    border: 6px inset #f89837;
+    border-radius: 10px 40px 10px 40px;
+    box-shadow: 2px 2px 5px 2px;
+    width: 450px;
+    height: 135px;
+    margin: auto;
+    padding-top: 20px;
+    margin-top: 20px;
+    padding-bottom: 30px;
+    background-color: #000000;
+    padding: 10px;
+  }
+
+  table, th, td {
+    margin: auto;
+    border: solid 2px #000000;
+    border-collapse: collapse;
+    padding: 5px;
+    width: 450px;
+    font-size: medium;
+    font-size: medium;
+}
+
+
+tr:nth-child(even) /*כל שורה זוגית*/ {
+    color: #000000;
+    background-color: #ffb872;
+    
+}
+
+tr:nth-child(odd) /*כל שורה אי זוגית*/ /*nth=מספר לא ידוע*/ {
+    color: #000000;
+    background-color: rgb(191, 191, 191);
+}
+
+th /*כותרת, שורה ראשונה*/ {
+    color: #f89837;
+    font-size: large;
+    background-color: black;
+  
+}
