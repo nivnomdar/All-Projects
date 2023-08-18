@@ -1,0 +1,48 @@
+body {
+  text-align: center;
+  background-color: #4158d0;
+  background-image: linear-gradient(
+    90deg,
+    #c5c5c5 0%,
+    #f7d8ac 80%,
+    #868484 100%
+  );
+}
+.Box {
+  border: solid 1px black;
+  border-radius: 20px;
+  box-shadow: 2px 2px 5px 2px;
+  padding: 20px;
+  width: 200px;
+  margin: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: #f89837;
+}
+
+input {
+  padding: 10px;
+}
+
+  
+  table, th, td /*טבלה, כותרות, שורות*/ {
+      border: 1px solid black; /*שורות צבע שחור*/
+      border-collapse: collapse; /*מסדר את הטבלה*/
+      padding: 10px; /*להרחיב את השורות*/
+      margin: auto;
+      margin-top: 30px;
+      width: 500px;
+  }
+  
+  tr:nth-child(even) /*כל שורה זוגית*/ {
+      background-color: rgb(176, 176, 176);
+  }
+  
+  tr:nth-child(odd) /*כל שורה אי זוגית*/ /*nth=מספר לא ידוע*/ {
+      background-color: lightgrey;
+  }
+  
+  thead tr:first-child /*כותרת, שורה ראשונה*/ {
+      background-color: #f8a451; 
+  }
+  
