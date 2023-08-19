@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niv items</title>
+    <link href="items.css" rel="stylesheet" />
+    <script defer src="items.js"></script>
+</head>
+<body>
+
+
+<h1 class="title">Niv Store</h1>
+<hr />
+
+
+<div class="Box">
+  <form action="javascript:getData()" id="form">
+
+      <input type="text" placeholder="item name" id="iName" required/>
+      <input type="number" placeholder="amount" id="iAmount" required/>
+      <br />
+
+      <input type="text" placeholder="price" id="iPrice" required/>
+      <input type="photo" placeholder="upload photo" id="iPhoto" required/>
+      <br /><br />
+
+
+      <input type="submit" value="submit"/>
+      <input type="reset" value="reset" />
+    </form></div>
+<br /></br>
+
+
+<table>
+    <thead>
+      <th>Photo</th>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Price</th>
+      <th id="iTotal">Total (₪)</th>
+      <th>check</th>
+    </thead>
+
+    <tbody id="iTable"></tbody>
+</table>
+
+</br></br>
+
+<div id="tPrice">
+Total: <span id="dollar">0</span>₪
+</div>
+
+
+
+
+</body>
+</html>
