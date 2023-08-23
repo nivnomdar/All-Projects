@@ -1,0 +1,32 @@
+.Home {
+	text-align: center;
+    margin: auto;
+    font-weight:300;
+}
+
+
+table{
+    margin: auto;
+
+}
+
+
+    
+    table, th, td /*טבלה, כותרות, שורות*/ {
+        border: 1px solid black; /*שורות צבע שחור*/
+        border-collapse: collapse; /*מסדר את הטבלה*/
+        padding: 10px; /*להרחיב את השורות*/
+    }
+    
+    tr:nth-child(even) /*כל שורה זוגית*/ {
+        background-color: lightblue;
+    }
+    
+    tr:nth-child(odd) /*כל שורה אי זוגית*/ /*nth=מספר לא ידוע*/ {
+        background-color: lightgrey;
+    }
+    
+    thead tr:first-child /*כותרת, שורה ראשונה*/ {
+        background-color: darkgrey; 
+    }
+    
