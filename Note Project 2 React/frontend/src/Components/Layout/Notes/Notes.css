@@ -1,0 +1,64 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+
+.Notes{
+  display: block;
+  width: 98%;
+  
+}
+
+  .noteBody {
+    background-image: url("../../img/notebg.png");
+
+    position: relative;
+    color: black(0, 0, 0);
+    left: 40px;
+    width: 200px;
+    height: 250px;
+    display: inline-block;
+    animation: noteFadeIn 1.5s ease-out;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes noteFadeIn{
+    0% {
+        opacity: 0.1;
+    }
+    100%{
+        opacity: 1;
+    }
+  }
+
+
+
+  .name {
+    position: absolute;
+    top: 70px;
+    left: 10px;
+    width: 172px;
+    height: 150px;;
+    font-size: 17px;
+    text-overflow: ellipsis;
+    overflow: auto;
+    font-weight: 600;
+    text-align: left
+  }
+
+  #xButton{
+    position: absolute;
+    left: 150px;
+    top: 20px;
+
+  }
+  
+  .date {
+    position: absolute;
+    left: 10px;
+    top: 190px;  }
+  
+  .time {
+    position: absolute;
+    left: 10px;
+    top: 210px;  
+    }
+
+

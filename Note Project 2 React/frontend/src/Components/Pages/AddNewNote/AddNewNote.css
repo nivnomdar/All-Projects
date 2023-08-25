@@ -1,0 +1,47 @@
+.AddNewNote {
+	width: 100%
+}
+
+.AddNewNoteForm {
+    background-image: url("../../img/formbg.jpg");
+    margin: auto;
+    position: relative;
+    width: 800px;
+    top: 20px;
+
+}
+
+#taskName{
+    position: absolute;
+    width: 550px;
+    top: 19px;
+    left: 90px;
+    padding: 12px;
+    height: 5px;
+    border-style: hidden;
+    font-size: larger;
+    background-color: rgb(246, 246, 246);
+    color: black; 
+}
+
+#taskDate{
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    width: 550px;
+    padding: 1px;
+    border-style: hidden;
+    font-size: large;
+    background-color: rgb(246, 246, 246);
+}
+
+#taskTime{
+    position: absolute;
+    top: 83px;
+    left: 102px;
+    width: 550px;
+    padding: 1px;
+    border-style: hidden;
+    font-size: large;
+    background-color: rgb(246, 246, 246);
+}
