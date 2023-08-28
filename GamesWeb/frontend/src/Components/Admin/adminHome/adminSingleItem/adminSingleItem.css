@@ -1,0 +1,46 @@
+.adminSingleItem {
+	
+}
+
+
+
+
+.card{
+    margin: 5px;
+    font-weight: 500;
+    margin: 20px;
+    height: 400px;
+
+  }
+
+
+  .card_title{
+    text-decoration: none;
+    color: white;
+    margin-bottom: 10px;
+    white-space: nowrap; /* fix the title sizes to be the same */
+    text-overflow: ellipsis;
+    margin: left;
+  }
+
+  .card_image {
+    width: 100%;
+    height: 250px;
+
+  }
+
+  .like_button{
+    position: absolute;
+    top: 20px;
+  }
+
+  .card_content {
+    flex: 1; /* Take up remaining space */
+    padding: 10px; /* Add padding for spacing */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute content evenly */
+  }
+  
+
+  

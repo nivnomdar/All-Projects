@@ -1,0 +1,36 @@
+
+.SingleItem {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    margin-top: 20px;
+    /* grid-template-rows: 10% 90%;
+    grid-template-columns: repeat(6, 1fr); */
+    }
+.SearchPage {
+    margin-bottom: 20px;
+    color: white;
+			
+	}
+		
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      
+      .pagination button {
+        margin: 0 5px;
+        margin-bottom: 10px;
+
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        cursor: pointer;
+      }
+      
+      .pagination button.active {
+        background-color: #ccc;
+      }

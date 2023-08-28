@@ -1,0 +1,29 @@
+.SearchGame{
+    margin-left: auto;
+    margin-right: 52px;
+    width: 30%;
+    margin-top: 5px;
+    height: 500px;
+
+}
+
+.input-group{
+    outline: none;
+
+}
+
+#searchButton{
+    color: lightgray;
+}
+
+#searchBox{
+    color: black;
+
+
+}
+
+#categoriesButtons{
+    margin: auto;
+
+}
+

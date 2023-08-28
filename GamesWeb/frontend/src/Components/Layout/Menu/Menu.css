@@ -1,0 +1,9 @@
+.Menu {
+    height: 100%;
+  }
+  .Menu > a {
+    text-decoration: none;
+    color: black;
+    font-size: large;
+  }
+  

@@ -1,0 +1,36 @@
+.MainLayout {
+    height: 100%;
+    box-sizing: border-box;
+    display: grid;
+    /* grid-template-rows: 15% 75% 10%;
+    grid-template-columns: repeat(6, 1fr); */
+    font-family: 'Dosis', sans-serif;
+    grid-template-rows: 9% 7% 80% 4%;
+    grid-template-columns: repeat(6, 1fr);
+    
+  }
+
+  .MainLayout > header,
+  .MainLayout > footer,
+  .MainLayout > .Search {
+    grid-column: span 6;
+    background-color: black;
+
+  }
+  
+  .MainLayout > main {
+    grid-column: span 5;
+ 
+    /* background-image: url("../../images/Games-background.png"); */
+  }
+  
+  .MainLayout,
+  .MainLayout > * {
+    /* border: 1px solid black; */
+
+  }
+
+  .MainLayout > .Search{
+    background-color: black;
+    width: 100%;
+  }
