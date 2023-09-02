@@ -111,7 +111,7 @@ function Register(): JSX.Element {
         <TextField
           type="text"
           variant="outlined"
-          className="firstName"
+          className="inputField"
           value={formData.first_name}
           onChange={handleChange}
           name="first_name"
@@ -121,7 +121,7 @@ function Register(): JSX.Element {
         <TextField
           type="text"
           variant="outlined"
-          className="lastName"
+          className="inputField"
           value={formData.last_name}
           onChange={handleChange}
           name="last_name"
@@ -131,7 +131,7 @@ function Register(): JSX.Element {
         <TextField
           type="text"
           variant="outlined"
-          className="email"
+          className="inputField"
           value={formData.email}
           onChange={handleChange}
           name="email"
@@ -141,7 +141,7 @@ function Register(): JSX.Element {
         <TextField
           type="text"
           variant="outlined"
-          className="password"
+          className="inputField"
           value={formData.password}
           onChange={handleChange}
           name="password"
@@ -152,13 +152,13 @@ function Register(): JSX.Element {
           type="button"
           color="primary"
           variant="contained"
-          onClick={checkForm}>
-          <HowToReg />
+          onClick={checkForm}
+          className="registerButton">
+          <HowToReg /> Register
         </Button>
-        <br />
-        already a member?
-        <br />
-        <Link to="/login">login</Link>
+        <Typography className="loginText" variant="body2">
+          Already a member? <Link to="/login">Login</Link>
+        </Typography>
       </div>
     </div>
   );

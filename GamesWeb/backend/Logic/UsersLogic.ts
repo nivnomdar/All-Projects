@@ -5,6 +5,13 @@ import { OkPacket } from "mysql";
 
 
 
+//  (ללא סיסמא) (שם משתמש ומייל)
+const getAllUsers = async () => {
+  const SQL = `SELECT user_id, first_name, last_name, email, password, role FROM users`;
+  return await dal_mysql.execute(SQL);
+  
+}
+
 
 // קבלת רשימת משתמשים (ללא סיסמא) (שם משתמש ומייל)
 const getUserList = async () => {
@@ -32,12 +39,12 @@ const addUser = async (newUser: User) => {
 
 
 // קבלת יוזר וסיסמא
-const checkLogin = async (user: User) => {
+const checkLogin = async (data: any) => {
     const SQL = `
     SELECT count(*) as userok, user_id as user_id
     FROM users
-    WHERE email='${user.email}'
-    AND password='${user.password}'`;
+    WHERE email='${data.email}'
+    AND password='${data.Password}'`;
     const result = await dal_mysql.execute(SQL);
   
     if (result.length > 0 && result[0].userok === 1) {
@@ -52,4 +59,4 @@ const checkLogin = async (user: User) => {
     }
   }
 
-  export {getUserList, checkLogin, addUser};
+  export {getUserList, checkLogin, addUser, getAllUsers};

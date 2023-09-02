@@ -1,9 +1,19 @@
-import { addUser, checkLogin, getUserList } from '../Logic/UsersLogic';
+import { addUser, checkLogin, getAllUsers, getUserList } from '../Logic/UsersLogic';
 import express, {NextFunction, Request, Response } from "express";
 import User from '../Models/UserModal';
 
 
 const usersRouter = express.Router();
+
+
+usersRouter.get(
+    "/allusers",
+    async (request:Request, response: Response, next: NextFunction)=>{
+        return response.status(200).json(await getAllUsers());
+    //  http://localhost:4000/api/users/allusers
+
+    }
+)
 
 // כל המשתמשים ללא סיסמאות
 usersRouter.get(

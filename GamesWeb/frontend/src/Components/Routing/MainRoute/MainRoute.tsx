@@ -9,6 +9,7 @@ import AddGame from "../../Admin/addGame/addGame";
 import AdminHome from "../../Admin/adminHome/adminHome";
 import EditGame from "../../Admin/editGame/editGame";
 import Register from "../../Pages/Register/Register";
+import Login from "../../Pages/Login/Login";
 
 function MainRoute(): JSX.Element {
   return (
@@ -18,6 +19,7 @@ function MainRoute(): JSX.Element {
         <Route path="/home" element={<Games />} />
         <Route path="/adminHome" element={<AdminHome />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
 
         <Route path="/gameplayer/:id" element={<Player />} />
         <Route path="/search/:searchText" element={<SearchPage />} />
