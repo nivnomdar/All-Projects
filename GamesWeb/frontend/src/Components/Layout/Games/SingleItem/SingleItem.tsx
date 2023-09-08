@@ -50,16 +50,14 @@ function SingleItem(props: itemProps): JSX.Element {
     <Card className="card text-bg-dark" key={props.game_id}>
       <div className="card_content">
         <CardMedia
-          className="card_title"
+          className="card_image"
+          component="img"
+          image={props.image_url}
+          alt={props.game_name}
           onClick={() => {
-            <Link
-              to={`/gamePlayer/${props.game_id}`}
-              id="allGames"
-              className="col-md-3"></Link>;
             navigate(`/gamePlayer/${props.game_id}`);
-          }}>
-          {props.game_name}
-        </CardMedia>
+          }}
+        />
 
         <div className="like_button">
           <IconButton onClick={() => handleLikeClick(props.game_id)}>
@@ -70,25 +68,20 @@ function SingleItem(props: itemProps): JSX.Element {
           </IconButton>
         </div>
 
-        <CardMedia
-          className="card_image"
-          component="img"
-          image={props.image_url}
-          alt={props.game_name}
-        />
-
-        <CardContent>
-          <Typography variant="inherit">{props.platforms}</Typography>
-          <Typography variant="inherit" color="green">
+        <div className="card_info">
+          <CardMedia className="card_title">{props.game_name}</CardMedia>
+          <Typography variant="inherit" className="card_platforms">
+            {props.platforms}
+          </Typography>
+          <Typography variant="inherit" className="card_price">
             {props.price}$
           </Typography>
-          <Typography variant="inherit" color="white">
+          <Typography variant="inherit" className="card_categories">
             {props.categories}
           </Typography>
-        </CardContent>
+        </div>
       </div>
     </Card>
   );
 }
-
 export default SingleItem;

@@ -75,9 +75,7 @@ function AddGame(): JSX.Element {
 
   return (
     <div className="addGame">
-      <Typography variant="h3" className="HeadLine">
-        Add Game
-      </Typography>
+      <Typography variant="h5">Add Game</Typography>
       <br />
       <TextField
         type="text"
@@ -203,10 +201,9 @@ function AddGame(): JSX.Element {
           name="achievements"
         />
       </div>
-      <br /> <br />
       <Button
         type="button"
-        color="primary"
+        color="success"
         variant="contained"
         onClick={addNewGame}>
         <AddCircleOutline />

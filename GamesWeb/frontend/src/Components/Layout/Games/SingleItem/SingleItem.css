@@ -1,41 +1,73 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
 
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-      .card{
-        margin: 5px;
-        font-weight: 500;
-        margin: 20px;
-        height: 400px;
+.card_content {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
 
-      }
+.card_title {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 
+.card_image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
 
-      .card_title{
-        text-decoration: none;
-        color: white;
-        margin-bottom: 10px;
-        white-space: nowrap; /* fix the title sizes to be the same */
-        text-overflow: ellipsis;
-        margin: left;
-      }
+.like_button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 
-      .card_image {
-        width: 100%;
-        height: 250px;
+.card_info {
+  margin-top: auto;
+}
 
-      }
+.card_info > * {
+  margin-bottom:10px;
+}
 
-      .like_button{
-        position: absolute;
-        top: 20px;
-      }
+.card_platforms {
+  font-size: 14px;
+  color: white;
+}
 
-      .card_content {
-        flex: 1; /* Take up remaining space */
-        padding: 10px; /* Add padding for spacing */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between; /* Distribute content evenly */
-      }
-      
+.card_price {
+  font-size: 14px;
+  font-weight: bold;
+  color: #00c853; /* Green color for price */
+}
 
-      
+.card_categories {
+  font-size: 14px;
+  color: white;
+}

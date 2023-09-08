@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import {
   ClearRounded,
-  DeleteForeverOutlined,
+  DeleteForever,
   DeleteOutlineOutlined,
   EditNote,
   TrendingDown,
@@ -97,17 +97,7 @@ function AdminSingleItem(props: itemProps): JSX.Element {
     <Card className="card text-bg-dark" key={props.game_id}>
       {/* Card */}
       <div className="card_content">
-        <CardMedia
-          className="card_title"
-          onClick={() => {
-            <Link
-              to={`/gamePlayer/${props.game_id}`}
-              id="allGames"
-              className="col-md-3"></Link>;
-            navigate(`/gamePlayer/${props.game_id}`);
-          }}>
-          {props.game_name}
-        </CardMedia>
+        <CardMedia className="card_title">{props.game_name}</CardMedia>
 
         <CardMedia
           className="card_image"
@@ -116,14 +106,14 @@ function AdminSingleItem(props: itemProps): JSX.Element {
           alt={props.game_name}
         />
 
-        {/* Delete game Button */}
+        {/* Delete and Edit game Buttons */}
         <CardContent>
           <Button
             variant="outlined"
             color="warning"
             title="Delete game"
             onClick={() => handleDeleteClick(props)}>
-            <DeleteForeverOutlined />
+            <DeleteForever />
           </Button>
           <Button
             variant="outlined"
@@ -161,7 +151,7 @@ function AdminSingleItem(props: itemProps): JSX.Element {
             <DialogActions>
               <Button
                 variant="contained"
-                color="primary"
+                color="inherit"
                 onClick={() => handleCancelDelete(props)}>
                 <ClearRounded />
               </Button>
@@ -170,7 +160,7 @@ function AdminSingleItem(props: itemProps): JSX.Element {
                 variant="contained"
                 color="error"
                 onClick={() => handleConfirmDelete(props)}>
-                <DeleteOutlineOutlined />
+                <DeleteForever />
               </Button>
             </DialogActions>
           </Dialog>
