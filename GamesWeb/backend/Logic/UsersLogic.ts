@@ -39,12 +39,12 @@ const addUser = async (newUser: User) => {
 
 
 // קבלת יוזר וסיסמא
-const checkLogin = async (data: any) => {
+const checkLogin = async (email: string, password: string) => {
     const SQL = `
     SELECT count(*) as userok, user_id as user_id
     FROM users
-    WHERE email='${data.email}'
-    AND password='${data.Password}'`;
+    WHERE email='${email}'
+    AND password='${password}'`;
     const result = await dal_mysql.execute(SQL);
   
     if (result.length > 0 && result[0].userok === 1) {
@@ -55,7 +55,8 @@ const checkLogin = async (data: any) => {
       
     } else {
       // Login failed, return null or throw an error
-      return null; // Or throw an error indicating login failure
+      return console.error("something didnt work");
+      ; // Or throw an error indicating login failure
     }
   }
 

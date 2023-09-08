@@ -3,7 +3,7 @@ import "./Games.css";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 import SingleItem from "./SingleItem/SingleItem";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { gamesWeb } from "../../Redux/Store";
 import { downloadGamesAction } from "../../Redux/GamesReducer";
 import Game from "../../Modals/GameModal";
@@ -13,6 +13,7 @@ function Games(): JSX.Element {
   const gamesPerPage = 12;
   const [refresh, setRefresh] = useState(false);
   const [allGames, setAllGames] = useState<Game[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (gamesWeb.getState().games.allGames.length < 2) {
@@ -27,7 +28,9 @@ function Games(): JSX.Element {
       setRefresh(true);
     }
   }, [allGames]);
-
+  if (!localStorage.getItem("token")) {
+    navigate("/login");
+  }
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };

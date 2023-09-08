@@ -3,6 +3,7 @@ import config from "./Config";
 
 //create a connection object to mysql server....
 const connection = mysql.createPool({
+  // domain: config.domain,
   host: config.mysql_host,
   user: config.mysql_user,
   password: config.mysql_password,

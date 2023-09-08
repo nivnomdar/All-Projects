@@ -4,35 +4,42 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginOutlined } from "@mui/icons-material";
 import axios from "axios";
-import User from "../../Modals/UserModal";
+import authService from "./authService"; // Import the authService
 
 function Login(): JSX.Element {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleChange = () => {};
-
-  const submitLogin = () => {
+  const submitLogin = async () => {
     if (userEmail.length < 4) {
       console.log("Password should have at least 4 characters");
       alert("Password should have at least 4 characters");
       return;
     }
 
-    const data = {
-      email: userEmail,
-      password: userPassword,
-    };
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/api/users/login",
+        {
+          email: userEmail,
+          password: userPassword,
+        }
+      );
 
-    console.log("clicked");
-
-    axios
-      .post("http://localhost:4000/api/users/checkLogin", data)
-      .then((response) => {
-        // const userID = response.data.userID;
-        console.log(response);
-      });
+      if (response.data.success) {
+        // Assuming your backend sends a success flag upon successful login
+        // מתקשר ל authservice
+        authService.login(response.data.token); // Call the login function from authService
+        navigate("/home"); // Redirect to the home page or the desired route
+      } else {
+        console.log("Login failed:", response.data.error);
+        alert("Login failed. Please check your credentials.");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("An error occurred during login.");
+    }
   };
 
   return (
@@ -68,7 +75,8 @@ function Login(): JSX.Element {
           variant="contained"
           onClick={submitLogin}
           fullWidth>
-          <LoginOutlined /> Login
+          Login
+          <LoginOutlined />
         </Button>
         <Typography className="registerText" variant="body2">
           Don't have an account? <Link to="/register">Register</Link>

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./adminSingleItem.css";
 // import "bootstrap/dist/css/bootstrap.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Button,
   Card,
@@ -75,7 +75,7 @@ function AdminSingleItem(props: itemProps): JSX.Element {
 
   const handleConfirmDelete = async (game: Game) => {
     const gameID = game.game_id;
-    console.log(gameID);
+    console.log("Game-ID to delete: ", gameID);
 
     await axios.delete(`http://localhost:4000/api/Games/deleteById/${gameID}`);
     gamesWeb.dispatch(deleteGameAction(gameID)); // Dispatch delete action
@@ -88,6 +88,9 @@ function AdminSingleItem(props: itemProps): JSX.Element {
     console.log(game.game_name, "removed!");
     alert("Videogame removed!");
     setSelectedToDelete(null);
+
+    // Reload the page to reflect the deleted game
+    window.location.reload();
   };
 
   return (

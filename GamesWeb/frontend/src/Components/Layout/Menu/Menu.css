@@ -1,9 +1,10 @@
 .Menu {
-    height: 100%;
-  }
-  .Menu > a {
-    text-decoration: none;
-    color: black;
-    font-size: large;
-  }
-  
+  color: black;
+  font-size: large;
+  height: 100%;
+}
+
+.menu-link {
+  text-decoration: none; /* Remove text decoration */
+  color: black; /* Set text color */
+}

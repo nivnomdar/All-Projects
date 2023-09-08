@@ -1,5 +1,3 @@
-import { gamesWeb } from './../frontend/src/Components/Redux/Store';
-//import
 import cors from "cors";
 import express from "express";
 import fileUpload from "express-fileupload";
@@ -8,9 +6,10 @@ import ErrorHandler from "./MiddleWare/route-not-found"
 import GamesRoute from "./Routes/GamesRoute";
 import usersRouter from "./Routes/UsersRoute";
 import session from "express-session";
-
+// import jwt from "jsonwebtoken";
 //create server
 const server = express();
+
 
 //our middleWare
 // עם קורס אפשר להגביל גישה לשרת שלנו
@@ -21,10 +20,7 @@ server.use(cors()); // cros = cross origin resource sharing.
 //(JSON,XML,RAW,string)
 server.use(express.json());
 
-// use session
-server.use(session({
-   secret: 'thisismysecret'
-}));
+
 
 //where i will save my files from upload
 server.use(express.static("upload"));
@@ -38,16 +34,15 @@ server.use("/api/Users", usersRouter);
 
 
 
+
+
 //handle errors(route not found)
 server.use("*", ErrorHandler);
 
-// http://localhost:4000/api/users/allusers
-server.get('/users', (req, res) => {
-    res.json("http://localhost:4000/api/users/allusers");
-})
+
 
 //start the server
 server.listen(config.webPort, () => {
-    console.log(`listening on http://localhost:${config.webPort}`);
+    console.log(`Server is running on http://localhost:${config.webPort}`);
 });
 
