@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginOutlined } from "@mui/icons-material";
 import axios from "axios";
-import authService from "./authService"; // Import the authService
 
 function Login(): JSX.Element {
   const [userEmail, setUserEmail] = useState("");
@@ -31,11 +30,10 @@ function Login(): JSX.Element {
       );
 
       if (response.data.success) {
-        console.log(response);
+        console.log("User Login? -", response.data.success);
 
         // Assuming your backend sends a success flag upon successful login
-        // מתקשר ל authservice
-        authService.login(response.data.token); // Call the login function from authService
+        // authService.login(response.data.token); // Call the login function from authService
         navigate("/home"); // Redirect to the home page or the desired route
       } else {
         console.log("Login failed:", response.data.error);

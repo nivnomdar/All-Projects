@@ -28,9 +28,7 @@ function Games(): JSX.Element {
       setRefresh(true);
     }
   }, [allGames]);
-  if (!localStorage.getItem("token")) {
-    navigate("/login");
-  }
+
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };

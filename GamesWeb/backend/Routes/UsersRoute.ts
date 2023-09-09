@@ -1,6 +1,5 @@
 import { addUser, checkLogin, getAllUsers, getUserList } from '../Logic/UsersLogic';
 import express, {NextFunction, Request, Response } from "express";
-import jwt from 'jsonwebtoken'; 
 
 const usersRouter = express.Router();
 

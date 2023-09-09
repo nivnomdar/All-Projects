@@ -4,7 +4,6 @@ import User from "../../Modals/UserModal";
 import { gamesWeb } from "../../Redux/Store";
 import axios from "axios";
 import { downloadUsersAction } from "../../Redux/UsersReducer";
-import authService from "../../Pages/Login/authService";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Login, Logout } from "@mui/icons-material";
@@ -24,12 +23,6 @@ function Header(): JSX.Element {
           // const userName = `${result[0].first_name} ${result[0].last_name}`;
           setAllUsers(result);
           console.log("all users:", result);
-
-          if (authService.isAuthenticated()) {
-            return navigate("/home");
-          } else {
-            return navigate("/login");
-          }
         });
     }
   }, []);
@@ -38,24 +31,22 @@ function Header(): JSX.Element {
     <div className="Header row">
       <h1>MY next GAME</h1>
       <div className="AuthButtons">
-        {!authService.isAuthenticated() ? (
-          <Button
-            onClick={() => {
-              // console.log("Handle Login");
-              navigate("/login");
-            }}>
-            Login <Login />
-          </Button>
+        <Button
+          onClick={() => {
+            // console.log("Handle Login");
+            navigate("/login");
+          }}>
+          Login <Login />
+        </Button>
         ) : (
-          <Button
-            onClick={() => {
-              authService.logout(); // Call the logout function from authService
-              navigate("/login"); // Redirect to the login page
-            }}>
-            Logout
-            <Logout />
-          </Button>
-        )}
+        <Button
+          onClick={() => {
+            navigate("/login"); // Redirect to the login page
+          }}>
+          Logout
+          <Logout />
+        </Button>
+        )
       </div>
     </div>
   );

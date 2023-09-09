@@ -10,7 +10,6 @@ import AdminHome from "../../Admin/adminHome/adminHome";
 import EditGame from "../../Admin/editGame/editGame";
 import Register from "../../Pages/Register/Register";
 import Login from "../../Pages/Login/Login";
-import authService from "../../Pages/Login/authService";
 // import ProtectedRoute from "./ProtectedRoute";
 import Favorites from "../../Pages/Favorites/Favorites";
 import { useEffect } from "react";
@@ -22,18 +21,7 @@ function MainRoute(): JSX.Element {
 
   useEffect(() => {
     // Check authentication status here and navigate accordingly
-    if (authService.isAuthenticated()) {
-      console.log(`Is authenticated (${authService.isAuthenticated()})`);
-      // If authenticated, redirect to the home page
-      navigate("/home");
-    } else {
-      // If not authenticated, redirect to the login page
-      console.log(
-        `Please login to continue (${authService.isAuthenticated()})`
-      );
-
-      navigate("/login");
-    }
+    // navigate("/login");
   }, []);
 
   return (
@@ -43,19 +31,15 @@ function MainRoute(): JSX.Element {
         <Route path="/register" element={<Register />} />
         <Route path="/About" element={<About />} />
 
-        {authService.isAuthenticated() ? (
-          <>
-            <Route index element={<Games />} />
-            <Route path="/home" element={<Games />} />
-            <Route path="/adminHome" element={<AdminHome />} />
-            <Route path="/addGame" element={<AddGame />} />
-            <Route path="/editGame/:id" element={<EditGame />} />
-            <Route path="/gameplayer/:id" element={<Player />} />
-            <Route path="/favorites" element={<Favorites />} />
+        <Route index element={<Games />} />
+        <Route path="/home" element={<Games />} />
+        <Route path="/adminHome" element={<AdminHome />} />
+        <Route path="/addGame" element={<AddGame />} />
+        <Route path="/editGame/:id" element={<EditGame />} />
+        <Route path="/gameplayer/:id" element={<Player />} />
+        <Route path="/favorites" element={<Favorites />} />
 
-            <Route path="/search/:searchText" element={<SearchPage />} />
-          </>
-        ) : null}
+        <Route path="/search/:searchText" element={<SearchPage />} />
 
         <Route path="*" element={<Page404 />} />
       </Routes>
