@@ -20,14 +20,19 @@ function Login(): JSX.Element {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/users/login",
+        "http://localhost:4000/api/login/",
         {
           email: userEmail,
           password: userPassword,
+        },
+        {
+          withCredentials: true, // Add this line
         }
       );
 
       if (response.data.success) {
+        console.log(response);
+
         // Assuming your backend sends a success flag upon successful login
         // מתקשר ל authservice
         authService.login(response.data.token); // Call the login function from authService

@@ -17,16 +17,21 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function MainRoute(): JSX.Element {
-  console.log("Is authenticated:", authService.isAuthenticated());
+  // console.log("Is authenticated:", authService.isAuthenticated());
   const navigate = useNavigate();
 
   useEffect(() => {
     // Check authentication status here and navigate accordingly
     if (authService.isAuthenticated()) {
+      console.log(`Is authenticated (${authService.isAuthenticated()})`);
       // If authenticated, redirect to the home page
       navigate("/home");
     } else {
       // If not authenticated, redirect to the login page
+      console.log(
+        `Please login to continue (${authService.isAuthenticated()})`
+      );
+
       navigate("/login");
     }
   }, []);

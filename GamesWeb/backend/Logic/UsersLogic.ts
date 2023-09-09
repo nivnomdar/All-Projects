@@ -56,7 +56,7 @@ const checkLogin = async (email: string, password: string) => {
     } else {
       // Login failed, return null or throw an error
       return console.error("something didnt work");
-      ; // Or throw an error indicating login failure
+       // Or throw an error indicating login failure
     }
   }
 

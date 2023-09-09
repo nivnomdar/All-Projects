@@ -21,18 +21,18 @@ function Header(): JSX.Element {
         .then((response) => response.data)
         .then((result) => {
           gamesWeb.dispatch(downloadUsersAction(result));
-          console.log("new Loading:", result);
+          // const userName = `${result[0].first_name} ${result[0].last_name}`;
           setAllUsers(result);
+          console.log("all users:", result);
 
           if (authService.isAuthenticated()) {
-            console.log("Logged in!");
             return navigate("/home");
           } else {
             return navigate("/login");
           }
         });
     }
-  }, [allUsers]);
+  }, []);
 
   return (
     <div className="Header row">

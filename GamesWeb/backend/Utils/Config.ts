@@ -1,5 +1,5 @@
 class Config {
-  // public domain = "WebGames";
+  public domain = "games.Nif-web.co.il";		// games.nivnomdar.co.il for an example...
   public mysql_host = "localhost";
   public mysql_user = "root";
   public mysql_password = "12345678";
