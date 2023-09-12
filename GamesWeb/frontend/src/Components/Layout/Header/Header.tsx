@@ -30,7 +30,7 @@ function Header(): JSX.Element {
   return (
     <div className="Header row">
       <h1>MY next GAME</h1>
-      <div className="AuthButtons">
+      {/* <div className="AuthButtons">
         <Button
           onClick={() => {
             // console.log("Handle Login");
@@ -47,7 +47,7 @@ function Header(): JSX.Element {
           <Logout />
         </Button>
         )
-      </div>
+      </div> */}
     </div>
   );
 }

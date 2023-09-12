@@ -125,7 +125,7 @@ function EditGame(): JSX.Element {
   return (
     <div className="editGame">
       <Typography variant="h3" className="HeadLine">
-        Edit {params.game_name}
+        Edit: {editForm.game_name}
       </Typography>
       <br />
       <div className="textFields">
@@ -254,22 +254,16 @@ function EditGame(): JSX.Element {
               onChange={handleInputChange}
             />
           </Typography>
-          <Checkbox
-            color="warning"
-            className="test"
-            placeholder="test"
-            name="test"
-            onChange={handleInputChange}
-          />
         </div>
       </div>
       <br /> <br />
       <Button
         type="button"
-        color="primary"
-        startIcon={<CheckCircleOutline />}
+        color="success"
         variant="contained"
-        onClick={handleEditGameButton}></Button>
+        onClick={handleEditGameButton}>
+        <CheckCircleOutline />
+      </Button>
       <br /> <br />
     </div>
   );
