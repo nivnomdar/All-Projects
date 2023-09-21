@@ -1,8 +1,8 @@
 .SearchGame {
     display: grid;
-    grid-template-columns: 1fr 4fr 2fr; /* Three columns with relative widths */
-    align-items: left; /* Vertically align items in the center */
-    gap: 20px; /* Spacing between columns */
+    grid-template-columns: 1fr 4fr 2fr; 
+    align-items: left; 
+    gap: 20px; 
 
   }
   
@@ -12,6 +12,8 @@
 
   #combo-box-demo{
 color: white;
+width: 100%; 
+align-self: center; 
   }
   
   .left {
@@ -19,13 +21,9 @@ color: white;
   }
   
   .middle {
-    /* Styles for the middle column (filters section) */
-    /* Example: background-color: lightblue; */
   }
   
   .right {
-    /* Styles for the right column (search input and search button) */
-    /* Example: background-color: lightgreen; */
-    text-align: left;
-    display: flex;
+  text-align: left;
+
   }

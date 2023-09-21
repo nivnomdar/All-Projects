@@ -27,7 +27,7 @@ function Games(): JSX.Element {
         });
       setRefresh(true);
     }
-  }, [allGames]);
+  }, []);
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -69,6 +69,7 @@ function Games(): JSX.Element {
 
   const indexOfLastGame = currentPage * gamesPerPage;
   const indexOfFirstGame = indexOfLastGame - gamesPerPage;
+
   const currentGames = gamesWeb
     .getState()
     .games.allGames.slice(indexOfFirstGame, indexOfLastGame);
@@ -78,7 +79,6 @@ function Games(): JSX.Element {
       {/* <h1>Games</h1> */}
       <div className="row">
         {currentGames.map((game: Game) => (
-          // {games.map((game: any) => (
           <div key={game.game_id} id="allGames" className="col-md-3">
             <SingleItem
               game_id={game["game_id"]}

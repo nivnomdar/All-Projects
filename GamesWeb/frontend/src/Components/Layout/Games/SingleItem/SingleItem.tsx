@@ -3,14 +3,7 @@ import "./SingleItem.css";
 // import "bootstrap/dist/css/bootstrap.css";
 import { useState } from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import {
-  Badge,
-  Card,
-  CardContent,
-  CardMedia,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { Badge, Card, CardMedia, IconButton, Typography } from "@mui/material";
 
 interface itemProps {
   game_id: number;

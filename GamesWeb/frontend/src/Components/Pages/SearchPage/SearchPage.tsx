@@ -3,6 +3,7 @@ import "./SearchPage.css";
 import { gamesWeb } from "../../Redux/Store";
 import SingleItem from "../../Layout/Games/SingleItem/SingleItem";
 import { useState } from "react";
+import Game from "../../Modals/GameModal";
 
 function SearchPage(): JSX.Element {
   const { searchText } = useParams<{ searchText: string }>();
@@ -12,7 +13,7 @@ function SearchPage(): JSX.Element {
   const gamesPerPage = 12;
 
   let allGames = gamesWeb.getState().games.allGames;
-  let filteredGames: any[] = [];
+  let filteredGames: Game[] = [];
 
   // Filter logic
   if (searchText) {
@@ -63,31 +64,40 @@ function SearchPage(): JSX.Element {
   const indexOfLastGame = currentPage * gamesPerPage;
   const indexOfFirstGame = indexOfLastGame - gamesPerPage;
   const currentGames = filteredGames.slice(indexOfFirstGame, indexOfLastGame);
+  console.log(currentGames.length);
 
   return (
     <div className="searchPage">
       <div className="row">
-        {filteredGames.map((game: any) => (
-          <div key={game.id} id="allGames" className="col-md-3">
-            <SingleItem
-              game_id={game["game_id"]}
-              game_name={game["game_name"]}
-              release_date={game["release_date"]}
-              categories={game["categories"]}
-              platforms={game["platforms"]}
-              developer={game["developer"]}
-              publisher={game["publisher"]}
-              short_description={game["short_description"]}
-              rating={game["rating"]}
-              price={game["price"]}
-              multiplayer={game["multiplayer"]}
-              mod_support={game["mod_support"]}
-              achievements={game["achievements"]}
-              image_url={game["image_url"]}
-              key={game["game_id"]}
-            />
+        {currentGames.length <= 1 ? (
+          currentGames.map((game: Game) => (
+            <div key={game.game_id} id="allGames" className="col-md-3">
+              <SingleItem
+                game_id={game["game_id"]}
+                game_name={game["game_name"]}
+                release_date={game["release_date"]}
+                categories={game["categories"]}
+                platforms={game["platforms"]}
+                developer={game["developer"]}
+                publisher={game["publisher"]}
+                short_description={game["short_description"]}
+                rating={game["rating"]}
+                price={game["price"]}
+                multiplayer={!!game["multiplayer"]}
+                mod_support={!!game["mod_support"]}
+                achievements={!!game["achievements"]}
+                image_url={game["image_url"]}
+                key={game["game_id"]}
+              />
+            </div>
+          ))
+        ) : (
+          <div className="noResults">
+            Game not found...
+            <br />
+            Please try again
           </div>
-        ))}
+        )}
         <div className="pagination">{renderPaginationNumbers()}</div>
       </div>
     </div>

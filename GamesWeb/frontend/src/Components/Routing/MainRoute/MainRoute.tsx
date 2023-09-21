@@ -30,7 +30,6 @@ function MainRoute(): JSX.Element {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/About" element={<About />} />
-
         <Route index element={<Games />} />
         <Route path="/home" element={<Games />} />
         <Route path="/adminHome" element={<AdminHome />} />
@@ -38,8 +37,7 @@ function MainRoute(): JSX.Element {
         <Route path="/editGame/:id" element={<EditGame />} />
         <Route path="/gameplayer/:id" element={<Player />} />
         <Route path="/favorites" element={<Favorites />} />
-
-        <Route path="/search/:searchText" element={<SearchPage />} />
+        <Route path="/games/search/:searchText" element={<SearchPage />} />
 
         <Route path="*" element={<Page404 />} />
       </Routes>
