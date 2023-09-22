@@ -2,22 +2,28 @@
     height: 100%;
     box-sizing: border-box;
     display: grid;
+    overflow: hidden;
     /* grid-template-rows: 15% 75% 10%;
     grid-template-columns: repeat(6, 1fr); */
     font-family: 'Dosis', sans-serif;
-    grid-template-rows: 9% 7% 80% 4%;
+    grid-template-rows: 20% 74% 6%;
     grid-template-columns: repeat(6, 1fr);
     
   }
 
   .MainLayout > header,
-  .MainLayout > footer,
-  .MainLayout > .Search {
+  .MainLayout > footer
+   {
     grid-column: span 6;
-    background-color: black;
 
   }
-  
+
+
+  .MainLayout > aside {
+  background-color: black;
+}
+
+
   .MainLayout > main {
     grid-column: span 5;
  
@@ -29,8 +35,8 @@
     /* border: 1px solid black; */
 
   }
-
+/* 
   .MainLayout > .Search{
     background-color: black;
     width: 100%;
-  }
+  } */

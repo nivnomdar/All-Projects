@@ -2,7 +2,7 @@ import MainRoute from "../../Routing/MainRoute/MainRoute";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Menu from "../Menu/Menu";
-import Search from "../Search/Search";
+// import Search from "../Search/Search";
 
 import "./MainLayout.css";
 
@@ -12,9 +12,6 @@ function MainLayout(): JSX.Element {
       <header>
         <Header />
       </header>
-      <div className="Search">
-        <Search />
-      </div>
       <aside>
         <Menu />
       </aside>

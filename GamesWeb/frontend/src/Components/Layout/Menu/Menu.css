@@ -1,10 +1,10 @@
 .Menu {
-  color: black;
+  color: rgb(3, 142, 3);
   font-size: large;
   height: 100%;
 }
 
 .menu-link {
   text-decoration: none; /* Remove text decoration */
-  color: black; /* Set text color */
+  color: rgb(219, 218, 218);
 }

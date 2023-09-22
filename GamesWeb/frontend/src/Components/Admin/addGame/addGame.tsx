@@ -78,6 +78,7 @@ function AddGame(): JSX.Element {
       <Typography variant="h5">Add Game</Typography>
       <br />
       <TextField
+        required
         type="text"
         variant="outlined"
         className="gameName"
@@ -87,6 +88,7 @@ function AddGame(): JSX.Element {
         name="game_name"
       />
       <TextField
+        required
         type="text"
         variant="outlined"
         className="releaseDate"
@@ -97,6 +99,7 @@ function AddGame(): JSX.Element {
       />
       <br />
       <TextField
+        required
         type="text"
         variant="outlined"
         className="categories"
@@ -106,6 +109,7 @@ function AddGame(): JSX.Element {
         name="categories"
       />
       <TextField
+        required
         type="text"
         variant="outlined"
         className="platforms"
@@ -116,6 +120,7 @@ function AddGame(): JSX.Element {
       />
       <br />
       <TextField
+        required
         type="text"
         variant="outlined"
         className="developer"
@@ -125,6 +130,7 @@ function AddGame(): JSX.Element {
         name="developer"
       />
       <TextField
+        required
         type="text"
         variant="outlined"
         className="publisher"
@@ -135,6 +141,7 @@ function AddGame(): JSX.Element {
       />
       <br />
       <TextField
+        required
         type="text"
         variant="outlined"
         className="shortDescription"
@@ -144,6 +151,7 @@ function AddGame(): JSX.Element {
         name="short_description"
       />
       <TextField
+        required
         type="text"
         variant="outlined"
         className="imageURL"
@@ -154,6 +162,7 @@ function AddGame(): JSX.Element {
       />
       <br />
       <TextField
+        required
         type="number"
         variant="outlined"
         className="rating"
@@ -163,6 +172,7 @@ function AddGame(): JSX.Element {
         name="rating"
       />
       <TextField
+        required
         type="number"
         variant="outlined"
         className="price"
@@ -175,6 +185,7 @@ function AddGame(): JSX.Element {
       <Typography variant="body2">Multiplayer</Typography>
       <div className="checkboxs">
         <Checkbox
+          required
           color="warning"
           className="multiplayer"
           placeholder="Multiplayer"
@@ -184,6 +195,7 @@ function AddGame(): JSX.Element {
         />
         <Typography variant="body2">Mod support</Typography>
         <Checkbox
+          required
           color="warning"
           className="modSupport"
           placeholder="Mod support"
@@ -193,6 +205,7 @@ function AddGame(): JSX.Element {
         />
         <Typography variant="body2">Achievements</Typography>
         <Checkbox
+          required
           color="warning"
           className="achievements"
           placeholder="Achievements"

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./SingleItem.css";
 // import "bootstrap/dist/css/bootstrap.css";
 import { useState } from "react";

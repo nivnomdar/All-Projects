@@ -6,7 +6,8 @@ import axios from "axios";
 import { downloadUsersAction } from "../../Redux/UsersReducer";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { Login, Logout } from "@mui/icons-material";
+import { AccountCircle, Login, Logout } from "@mui/icons-material";
+import Nifweb from "../../images/small-Image .jpeg";
 
 function Header(): JSX.Element {
   const [allUsers, setAllUsers] = useState<User[]>([]);
@@ -29,8 +30,31 @@ function Header(): JSX.Element {
 
   return (
     <div className="Header row">
-      <h1>MY next GAME</h1>
-      {/* <div className="AuthButtons">
+      <div className="col">
+        <Button
+          className="Login"
+          type="button"
+          color="inherit"
+          variant="contained"
+          id="login"
+          onClick={() => {
+            navigate("/login");
+          }}>
+          Login
+          <AccountCircle color="secondary" />
+        </Button>
+      </div>
+      <div className="Title col">
+        <img src={Nifweb} width={50} />
+      </div>
+    </div>
+  );
+}
+
+export default Header;
+
+{
+  /* <div className="AuthButtons">
         <Button
           onClick={() => {
             // console.log("Handle Login");
@@ -47,9 +71,5 @@ function Header(): JSX.Element {
           <Logout />
         </Button>
         )
-      </div> */}
-    </div>
-  );
+      </div> */
 }
-
-export default Header;

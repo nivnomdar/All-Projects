@@ -4,13 +4,11 @@ import About from "../../Pages/About/About";
 import Page404 from "../../Pages/Page404/Page404";
 import Games from "../../Layout/Games/Games";
 import Player from "../../Pages/Player/Player";
-import SearchPage from "../../Pages/SearchPage/SearchPage";
 import AddGame from "../../Admin/addGame/addGame";
 import AdminHome from "../../Admin/adminHome/adminHome";
 import EditGame from "../../Admin/editGame/editGame";
 import Register from "../../Pages/Register/Register";
 import Login from "../../Pages/Login/Login";
-// import ProtectedRoute from "./ProtectedRoute";
 import Favorites from "../../Pages/Favorites/Favorites";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +35,6 @@ function MainRoute(): JSX.Element {
         <Route path="/editGame/:id" element={<EditGame />} />
         <Route path="/gameplayer/:id" element={<Player />} />
         <Route path="/favorites" element={<Favorites />} />
-        <Route path="/games/search/:searchText" element={<SearchPage />} />
 
         <Route path="*" element={<Page404 />} />
       </Routes>
@@ -46,24 +43,3 @@ function MainRoute(): JSX.Element {
 }
 
 export default MainRoute;
-
-{
-  /* <Route
-          path="/"
-          element={
-            authService.isAuthenticated() ? (
-              <ProtectedRoute>
-                <Route index element={<Games />} />
-                <Route path="/home" element={<Games />} />
-                <Route path="/adminHome" element={<AdminHome />} />
-                <Route path="/addGame" element={<AddGame />} />
-                <Route path="/editGame/:id" element={<EditGame />} />
-                <Route path="/gameplayer/:id" element={<Player />} />
-                <Route path="/search/:searchText" element={<SearchPage />} />
-              </ProtectedRoute>
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        /> */
-}

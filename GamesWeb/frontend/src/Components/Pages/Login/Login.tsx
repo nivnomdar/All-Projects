@@ -58,7 +58,7 @@ function Login(): JSX.Element {
           className="inputField"
           value={userEmail}
           name="email"
-          placeholder="Email"
+          placeholder="email"
           onChange={(args) => setUserEmail(args.target.value)}
         />
         <br />
@@ -69,7 +69,7 @@ function Login(): JSX.Element {
           value={userPassword}
           onChange={(args) => setUserPassword(args.target.value)}
           name="password"
-          placeholder="Password"
+          placeholder="password"
         />
         <br /> <br />
         <Button

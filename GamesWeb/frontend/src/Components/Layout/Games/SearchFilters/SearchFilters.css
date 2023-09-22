@@ -1,0 +1,41 @@
+.SearchFilters {
+    display: grid;
+    grid-template-columns: 2fr 1fr; 
+    align-items: center; 
+    gap: 20px; 
+
+    background-color: black;
+
+
+
+}
+
+  
+  .column {
+    display: flex; /* Use flexbox to center items horizontally */
+    align-items: center; /* Center vertically within the column */
+
+    padding: 10px; 
+
+  }
+
+  #combo-box-demo{
+color: white;
+  }
+  
+  .left {
+    
+  }
+  
+  label{
+    /* background-color: white;
+    color: white;
+    border-color: 5px aliceblue; */
+    /* color: white; */
+
+  }
+
+  .right {
+  text-align: left;
+
+}

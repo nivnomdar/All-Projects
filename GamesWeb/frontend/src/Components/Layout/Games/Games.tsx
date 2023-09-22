@@ -3,10 +3,11 @@ import "./Games.css";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 import SingleItem from "./SingleItem/SingleItem";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { gamesWeb } from "../../Redux/Store";
 import { downloadGamesAction } from "../../Redux/GamesReducer";
 import Game from "../../Modals/GameModal";
+import SearchFilters from "./SearchFilters/SearchFilters";
 
 function Games(): JSX.Element {
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,7 +28,7 @@ function Games(): JSX.Element {
         });
       setRefresh(true);
     }
-  }, []);
+  }, [SearchFilters]);
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -76,7 +77,7 @@ function Games(): JSX.Element {
 
   return (
     <div className="Games">
-      {/* <h1>Games</h1> */}
+      <SearchFilters />
       <div className="row">
         {currentGames.map((game: Game) => (
           <div key={game.game_id} id="allGames" className="col-md-3">
