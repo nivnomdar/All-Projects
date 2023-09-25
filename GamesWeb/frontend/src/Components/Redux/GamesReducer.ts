@@ -10,6 +10,7 @@ export enum GameActionType {
     searchGame = "searchGame",
     downloadGames = "downloadGames",
     updateGame = "updateGame",
+    filteredGames = "filteredGames"
 
 }
 
@@ -27,8 +28,8 @@ export function addGameAction(newGame: Game): GameAction {
   }
 
 
-export function searchGameAction(game_name: string): GameAction {
-    return { type: GameActionType.searchGame, payload: game_name};
+export function searchGameAction(text: string): GameAction {
+    return { type: GameActionType.searchGame, payload: text};
 }
 
 export function downloadGamesAction(allGames:Game[]){
@@ -38,6 +39,10 @@ export function downloadGamesAction(allGames:Game[]){
   export function updateGameAction(updatedGame: Game): GameAction {
     return { type: GameActionType.updateGame, payload: updatedGame };
   }
+
+  export function filteredGamesAction(allFilteredGames: Game[]) {
+    return { type: GameActionType.filteredGames, payload: allFilteredGames};
+}
 
 export function GameReducer(
     currentState: GameState = new GameState(),
@@ -61,6 +66,8 @@ switch (action.type) {
     newState.allGames = newState.allGames.filter((game) => 
     game.game_name.includes(action.payload)
     );
+    console.log("Search Complete : ", newState.allGames);
+
     break;
     
     case GameActionType.downloadGames: newState.allGames = action.payload;
@@ -70,6 +77,9 @@ switch (action.type) {
         newState.allGames = newState.allGames.map((game) =>
           game.game_id === action.payload.game_id ? action.payload : game
         );
+        break;
+
+        case GameActionType.filteredGames: newState.allGames = action.payload;
         break;
     
 

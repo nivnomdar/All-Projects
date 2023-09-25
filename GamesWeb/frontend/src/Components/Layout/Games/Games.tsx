@@ -15,6 +15,7 @@ function Games(): JSX.Element {
   const [refresh, setRefresh] = useState(false);
   const [allGames, setAllGames] = useState<Game[]>([]);
   const navigate = useNavigate();
+  // const [searchedGames, setSearchedGames] = useState<Game[]>([]);
 
   useEffect(() => {
     if (gamesWeb.getState().games.allGames.length < 2) {
@@ -23,12 +24,13 @@ function Games(): JSX.Element {
         .then((response) => response.data)
         .then((result) => {
           gamesWeb.dispatch(downloadGamesAction(result));
-          console.log("new Loading:", result);
+
+          console.log("Games loaded:", result.length);
           setAllGames(result);
         });
       setRefresh(true);
     }
-  }, [SearchFilters]);
+  }, []);
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);

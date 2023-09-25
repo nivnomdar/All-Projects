@@ -8,9 +8,13 @@ import {
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { downloadGamesAction } from "../../../Redux/GamesReducer";
-import { gamesWeb } from "../../../Redux/Store";
+import {
+  downloadGamesAction,
+  filteredGamesAction,
+  searchGameAction,
+} from "../../../Redux/GamesReducer";
 import Game from "../../../Modals/GameModal";
+import { gamesWeb } from "../../../Redux/Store";
 
 function SearchFilters(): JSX.Element {
   const [allGames, setAllGames] = useState<Game[]>([]);
@@ -28,26 +32,17 @@ function SearchFilters(): JSX.Element {
       .then((response) => response.data)
       .then((result) => {
         gamesWeb.dispatch(downloadGamesAction(result));
-        console.log("new Loading:", result);
+        console.log("new Loading:", result.length);
         setAllGames(result);
-        // if (searchText) {
-        //   filteredGames = allGames.filter((game) =>
-        //     game.game_name.toLowerCase().includes(searchText.toLowerCase())
-        //   );
-        // }
 
-        console.log(topGames);
+        // console.log(topGames);
       });
   }, []);
 
   const handleSearchGame = () => {
     const searchText = filters.searchText.toLowerCase();
-    const filteredGames = allGames.filter((game) =>
-      game.game_name.toLowerCase().includes(searchText)
-    );
-    setSearchedGames(filteredGames); // Set the searchGames state with filtered games
-    console.log("Filtered Games Found: ", filteredGames.length);
-    console.log("Text: ", searchText);
+    const filteredGames = gamesWeb.dispatch(searchGameAction(searchText));
+    console.log(filteredGames);
   };
 
   const topGames = allGames.map((game) => ({
