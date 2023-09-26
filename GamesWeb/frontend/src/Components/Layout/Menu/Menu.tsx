@@ -7,7 +7,7 @@ function Menu(): JSX.Element {
     <div className="Menu">
       <div className="userMenu">
         <hr />
-        <NavLink to="/home" className="menu-link">
+        <NavLink to="/" className="menu-link">
           Games
         </NavLink>
         <br />

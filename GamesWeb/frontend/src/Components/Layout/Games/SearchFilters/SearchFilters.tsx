@@ -24,7 +24,7 @@ function SearchFilters(): JSX.Element {
     priceFilter: false,
     searchText: "",
   });
-  const [searchedGames, setSearchedGames] = useState<Game[]>([]);
+  // const [filteredGames, setFilteredGames] = useState<Game[]>([]); // Store filtered games separately
 
   useEffect(() => {
     axios
@@ -34,15 +34,12 @@ function SearchFilters(): JSX.Element {
         gamesWeb.dispatch(downloadGamesAction(result));
         console.log("new Loading:", result.length);
         setAllGames(result);
-
-        // console.log(topGames);
       });
   }, []);
 
   const handleSearchGame = () => {
     const searchText = filters.searchText.toLowerCase();
-    const filteredGames = gamesWeb.dispatch(searchGameAction(searchText));
-    console.log(filteredGames);
+    gamesWeb.dispatch(searchGameAction(searchText));
   };
 
   const topGames = allGames.map((game) => ({

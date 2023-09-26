@@ -7,4 +7,5 @@
 .menu-link {
   text-decoration: none; /* Remove text decoration */
   color: rgb(219, 218, 218);
+  font-size: medium;
 }

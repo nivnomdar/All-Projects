@@ -15,7 +15,9 @@
   .MainLayout > footer
    {
     grid-column: span 6;
-
+    width: 100%; 
+    height: 100%;
+    background-color: black;
   }
 
 
@@ -26,7 +28,8 @@
 
   .MainLayout > main {
     grid-column: span 5;
- 
+    background-color: black;
+
     /* background-image: url("../../images/Games-background.png"); */
   }
   

@@ -12,13 +12,12 @@ import SearchFilters from "./SearchFilters/SearchFilters";
 function Games(): JSX.Element {
   const [currentPage, setCurrentPage] = useState(1);
   const gamesPerPage = 12;
-  const [refresh, setRefresh] = useState(false);
   const [allGames, setAllGames] = useState<Game[]>([]);
+  const [filteredGames, setFilteredGames] = useState<Game[]>([]);
   const navigate = useNavigate();
-  // const [searchedGames, setSearchedGames] = useState<Game[]>([]);
 
   useEffect(() => {
-    if (gamesWeb.getState().games.allGames.length < 2) {
+    if (gamesWeb.getState().games.allGames.length === 0) {
       axios
         .get("http://localhost:4000/api/Games/allGames")
         .then((response) => response.data)
@@ -28,17 +27,31 @@ function Games(): JSX.Element {
           console.log("Games loaded:", result.length);
           setAllGames(result);
         });
-      setRefresh(true);
+    } else {
+      const allGames = gamesWeb.getState().games.allGames;
+      console.log(allGames);
+      setAllGames(allGames);
     }
-  }, []);
+  }, [allGames]);
+
+  const unsubscribe = gamesWeb.subscribe(() => {
+    // When the games state changes (e.g., due to searchGameAction),
+    // update the filtered games state
+    const filtered = gamesWeb.getState().games.allFilteredGames;
+    setFilteredGames(filtered);
+  });
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
 
   const renderPaginationNumbers = () => {
+    // const totalPages = Math.ceil(filteredGames.length / gamesPerPage);
+
     const totalPages = Math.ceil(
-      gamesWeb.getState().games.allGames.length / gamesPerPage
+      filteredGames.length > 0
+        ? filteredGames.length / gamesPerPage
+        : allGames.length / gamesPerPage
     );
 
     if (totalPages <= 5) {
@@ -73,9 +86,14 @@ function Games(): JSX.Element {
   const indexOfLastGame = currentPage * gamesPerPage;
   const indexOfFirstGame = indexOfLastGame - gamesPerPage;
 
-  const currentGames = gamesWeb
-    .getState()
-    .games.allGames.slice(indexOfFirstGame, indexOfLastGame);
+  // אם אין חיפוש - תציג את כל המשחקים
+  // אם יש חיפוש - תציג את המשחקים שחופשו
+  const currentGames =
+    filteredGames.length > 0
+      ? filteredGames.slice(indexOfFirstGame, indexOfLastGame)
+      : allGames.slice(indexOfFirstGame, indexOfLastGame);
+
+  // const currentGames = filteredGames.slice(indexOfFirstGame, indexOfLastGame);
 
   return (
     <div className="Games">

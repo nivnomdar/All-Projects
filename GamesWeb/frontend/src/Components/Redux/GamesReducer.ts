@@ -2,6 +2,11 @@ import Game from "../Modals/GameModal";
 
 export class GameState {
     public allGames: Game[] = [];
+    public allFilteredGames: Game[] = [];
+
+
+
+
 }
 
 export enum GameActionType {
@@ -62,12 +67,13 @@ switch (action.type) {
         );
         break;
 
-    case GameActionType.searchGame:
-    newState.allGames = newState.allGames.filter((game) => 
-    game.game_name.includes(action.payload)
-    );
-    console.log("Search Complete : ", newState.allGames);
 
+        //Search
+    case GameActionType.searchGame:
+    newState.allFilteredGames = newState.allGames.filter((game) => 
+    game.game_name.toLowerCase().includes(action.payload)
+    );
+    console.log("Redux Search Complete. Games matched:", newState.allFilteredGames.length);
     break;
     
     case GameActionType.downloadGames: newState.allGames = action.payload;
