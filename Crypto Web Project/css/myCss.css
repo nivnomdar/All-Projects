@@ -1,0 +1,63 @@
+body {
+  background-color: lightgray;
+}
+
+
+body, html {
+
+}
+
+#title h1{
+  text-align: center;
+  font-size: 130px; font-weight:400; color:black; letter-spacing:35px;
+  text-transform: uppercase;
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  grid-template-rows: 700px 0;
+  grid-gap: 20px;
+  align-items: center;
+}
+
+#title h1:after,#title h1:before {
+  content: "";
+  display: block;
+  border-top: 2px solid #f06c00 ;
+  border-bottom: 2px solid black;
+  height: 5px;
+  background-color: gold;
+}
+
+[id^="Card-"] {
+  border-collapse: separate; 
+
+
+  /* collapse */
+  }; 
+  
+  [id^="cardHeader-"] {
+  background-color: black;
+  color: rgb(0, 0, 0);
+  font-size: large;
+}
+
+[id^="cardTitle-"] {
+
+  color: lightgray;
+  border-color: black;
+}
+
+[id^="img-"] {
+  width: 20px;
+  height: 20px;
+}
+
+#collapseCard{
+  width: 50px;
+  height: 50px;
+}
+
+#Search {
+width: 50%;
+margin-left: 50%;
+}
+
