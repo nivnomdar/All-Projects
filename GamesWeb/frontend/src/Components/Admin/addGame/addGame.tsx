@@ -75,153 +75,166 @@ function AddGame(): JSX.Element {
 
   return (
     <div className="addGame">
-      <Typography variant="h5">Add Game</Typography>
-      <br />
-      <TextField
-        required
-        type="text"
-        variant="outlined"
-        className="gameName"
-        placeholder="Game name"
-        value={formData.game_name}
-        onChange={handleInputChange}
-        name="game_name"
-      />
-      <TextField
-        required
-        type="text"
-        variant="outlined"
-        className="releaseDate"
-        placeholder="Release date"
-        value={formData.release_date}
-        onChange={handleInputChange}
-        name="release_date"
-      />
-      <br />
-      <TextField
-        required
-        type="text"
-        variant="outlined"
-        className="categories"
-        placeholder="Categories"
-        value={formData.categories}
-        onChange={handleInputChange}
-        name="categories"
-      />
-      <TextField
-        required
-        type="text"
-        variant="outlined"
-        className="platforms"
-        placeholder="Platforms"
-        value={formData.platforms}
-        onChange={handleInputChange}
-        name="platforms"
-      />
-      <br />
-      <TextField
-        required
-        type="text"
-        variant="outlined"
-        className="developer"
-        placeholder="Developer"
-        value={formData.developer}
-        onChange={handleInputChange}
-        name="developer"
-      />
-      <TextField
-        required
-        type="text"
-        variant="outlined"
-        className="publisher"
-        placeholder="Publisher"
-        value={formData.publisher}
-        onChange={handleInputChange}
-        name="publisher"
-      />
-      <br />
-      <TextField
-        required
-        type="text"
-        variant="outlined"
-        className="shortDescription"
-        placeholder="Short description"
-        value={formData.short_description}
-        onChange={handleInputChange}
-        name="short_description"
-      />
-      <TextField
-        required
-        type="text"
-        variant="outlined"
-        className="imageURL"
-        placeholder="Image URL"
-        value={formData.image_url}
-        onChange={handleInputChange}
-        name="image_url"
-      />
-      <br />
-      <TextField
-        required
-        type="number"
-        variant="outlined"
-        className="rating"
-        placeholder="Rating"
-        value={formData.rating}
-        onChange={handleInputChange}
-        name="rating"
-      />
-      <TextField
-        required
-        type="number"
-        variant="outlined"
-        className="price"
-        placeholder="Price"
-        value={formData.price}
-        onChange={handleInputChange}
-        name="price"
-      />
-      <br />
-      <Typography variant="body2">Multiplayer</Typography>
-      <div className="checkboxs">
-        <Checkbox
+      <div className="Inputs">
+        <Typography variant="h5">Add Game</Typography>
+        <br />
+        <TextField
           required
-          color="warning"
-          className="multiplayer"
-          placeholder="Multiplayer"
-          checked={formData.multiplayer === 1}
+          type="text"
+          variant="outlined"
+          color="error"
+          className="gameName"
+          placeholder="Game name"
+          value={formData.game_name}
           onChange={handleInputChange}
-          name="multiplayer"
+          name="game_name"
         />
-        <Typography variant="body2">Mod support</Typography>
-        <Checkbox
+        <TextField
           required
-          color="warning"
-          className="modSupport"
-          placeholder="Mod support"
-          checked={formData.mod_support === 1}
+          type="text"
+          variant="outlined"
+          className="releaseDate"
+          placeholder="Release date"
+          value={formData.release_date}
           onChange={handleInputChange}
-          name="mod_support"
+          name="release_date"
         />
-        <Typography variant="body2">Achievements</Typography>
-        <Checkbox
+        <br />
+        <TextField
           required
-          color="warning"
-          className="achievements"
-          placeholder="Achievements"
-          checked={formData.achievements === 1}
+          type="text"
+          variant="outlined"
+          className="categories"
+          placeholder="Categories"
+          value={formData.categories}
           onChange={handleInputChange}
-          name="achievements"
+          name="categories"
         />
+        <TextField
+          required
+          type="text"
+          variant="outlined"
+          className="platforms"
+          placeholder="Platforms"
+          value={formData.platforms}
+          onChange={handleInputChange}
+          name="platforms"
+        />
+        <br />
+        <TextField
+          required
+          type="text"
+          variant="outlined"
+          className="developer"
+          placeholder="Developer"
+          value={formData.developer}
+          onChange={handleInputChange}
+          name="developer"
+        />
+        <TextField
+          required
+          type="text"
+          variant="outlined"
+          className="publisher"
+          placeholder="Publisher"
+          value={formData.publisher}
+          onChange={handleInputChange}
+          name="publisher"
+        />
+        <br />
+        <TextField
+          required
+          type="text"
+          variant="outlined"
+          className="shortDescription"
+          placeholder="Short description"
+          value={formData.short_description}
+          onChange={handleInputChange}
+          name="short_description"
+        />
+        <TextField
+          required
+          type="text"
+          variant="outlined"
+          className="imageURL"
+          placeholder="Image URL"
+          value={formData.image_url}
+          onChange={handleInputChange}
+          name="image_url"
+        />
+        <br />
+        <TextField
+          required
+          type="number"
+          variant="outlined"
+          className="rating"
+          placeholder="Rating"
+          value={formData.rating}
+          onChange={handleInputChange}
+          name="rating"
+        />
+        <TextField
+          required
+          type="number"
+          variant="outlined"
+          className="price"
+          placeholder="Price"
+          value={formData.price}
+          onChange={handleInputChange}
+          name="price"
+        />
+        <br />
+        <div className="checkboxs">
+          <div className="checkboxContainer">
+            <Checkbox
+              required
+              color="warning"
+              className="multiplayer"
+              placeholder="Multiplayer"
+              checked={formData.multiplayer === 1}
+              onChange={handleInputChange}
+              name="multiplayer"
+            />
+            <Typography variant="body2" className="checkboxLabel">
+              Multiplayer
+            </Typography>
+          </div>
+          <div className="checkboxContainer">
+            <Checkbox
+              required
+              color="warning"
+              className="modSupport"
+              placeholder="Mod support"
+              checked={formData.mod_support === 1}
+              onChange={handleInputChange}
+              name="mod_support"
+            />
+            <Typography variant="body2">Mod support</Typography>
+          </div>
+          <div className="checkboxContainer">
+            <Checkbox
+              required
+              color="warning"
+              className="achievements"
+              placeholder="Achievements"
+              checked={formData.achievements === 1}
+              onChange={handleInputChange}
+              name="achievements"
+            />
+            <Typography variant="body2">Achievements</Typography>
+          </div>
+          <div className="AddButton">
+            <Button
+              type="button"
+              color="primary"
+              variant="contained"
+              onClick={addNewGame}>
+              <AddCircleOutline />
+            </Button>
+          </div>
+          <br /> <br />
+        </div>
       </div>
-      <Button
-        type="button"
-        color="success"
-        variant="contained"
-        onClick={addNewGame}>
-        <AddCircleOutline />
-      </Button>
-      <br /> <br />
     </div>
   );
 }

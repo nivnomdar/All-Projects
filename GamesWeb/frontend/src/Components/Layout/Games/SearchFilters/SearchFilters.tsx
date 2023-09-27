@@ -86,7 +86,7 @@ function SearchFilters(): JSX.Element {
             renderInput={(params) => (
               <TextField
                 {...params}
-                type="search"
+                type="text"
                 color="success"
                 placeholder="│  Search..."
                 variant="outlined"

@@ -1,21 +1,47 @@
 .addGame {
-    /* Styles for the main container */
+    color: white;
+    padding: 25px; 
+
   }
   
-  .gameName {
-    /* Styles for the Game name input */
-  }
+
+.Inputs{
+  color: white;
+
+}
+
+input[type="text"],
+input[type="number"]
+  {
+  color: white; 
+  border: 1px solid gray; 
+  padding: 10px;
+  margin: 5px 25px;
   
-  .releaseDate {
-    /* Styles for the Release date input */
-  }
-  
-  .categories {
-    /* Styles for the Categories input */
-  }
-  
-  /* ... Repeat for other input fields */
-  
-  .checkboxs {
-    /* Styles for the checkboxes container */
-  }
+}
+
+
+
+
+.checkboxs {
+  display: inline-block; 
+  margin: 5px;
+
+}
+
+.checkboxContainer {
+  display: inline-block; 
+  align-items: center;
+  margin: 5px 35px;
+
+}
+
+
+.MuiCheckbox-root .MuiSvgIcon-root {
+  width: 20px; 
+  height: 20px; 
+  border: 1px solid gray; 
+
+}
+
+
