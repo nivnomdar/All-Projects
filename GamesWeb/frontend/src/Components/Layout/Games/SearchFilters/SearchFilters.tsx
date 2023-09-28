@@ -12,19 +12,22 @@ import {
   downloadGamesAction,
   filteredGamesAction,
   searchGameAction,
+  topRatedGamesAction,
 } from "../../../Redux/GamesReducer";
 import Game from "../../../Modals/GameModal";
 import { gamesWeb } from "../../../Redux/Store";
+import { useSelector } from "react-redux";
 
 function SearchFilters(): JSX.Element {
   const [allGames, setAllGames] = useState<Game[]>([]);
   const [filters, setFilter] = useState({
     favorites: false,
-    topRated: false,
     priceFilter: false,
     searchText: "",
   });
-  // const [filteredGames, setFilteredGames] = useState<Game[]>([]); // Store filtered games separately
+  const isTopRatedFilter = useSelector(
+    (state: any) => state.games.isTopRatedFilter
+  );
 
   useEffect(() => {
     axios
@@ -40,6 +43,10 @@ function SearchFilters(): JSX.Element {
   const handleSearchGame = () => {
     const searchText = filters.searchText.toLowerCase();
     gamesWeb.dispatch(searchGameAction(searchText));
+  };
+
+  const handleFilterTopRatedClick = () => {
+    gamesWeb.dispatch(topRatedGamesAction(!isTopRatedFilter));
   };
 
   const topGames = allGames.map((game) => ({
@@ -62,7 +69,8 @@ function SearchFilters(): JSX.Element {
             type="button"
             color="warning"
             id="topRatedFilter"
-            variant="outlined">
+            variant="outlined"
+            onClick={handleFilterTopRatedClick}>
             <MilitaryTech color="primary" />
           </Button>
           <Button

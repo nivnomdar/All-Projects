@@ -66,6 +66,24 @@ function SingleItem(props: itemProps): JSX.Element {
           <Typography variant="inherit" className="card_platforms">
             {props.platforms}
           </Typography>
+          <Typography
+            variant="inherit"
+            className="card_rating"
+            style={{
+              color:
+                parseInt(props.rating) > 9
+                  ? "darkgreen"
+                  : parseInt(props.rating) > 8
+                  ? "green"
+                  : parseInt(props.rating) > 7
+                  ? "lightgreen"
+                  : parseInt(props.rating) > 6
+                  ? "darkyellow"
+                  : "red",
+            }}>
+            {props.rating}
+          </Typography>
+
           <Typography variant="inherit" className="card_price">
             {props.price}$
           </Typography>

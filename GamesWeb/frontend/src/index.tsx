@@ -5,13 +5,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import MainLayout from "./Components/Layout/MainLayout/MainLayout";
+import { Provider } from "react-redux";
+import { gamesWeb } from "./Components/Redux/Store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <BrowserRouter>
-    <MainLayout />
+    <Provider store={gamesWeb}>
+      <MainLayout />
+    </Provider>
   </BrowserRouter>
 );
 

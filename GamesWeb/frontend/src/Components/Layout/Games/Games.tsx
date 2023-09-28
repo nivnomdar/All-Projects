@@ -5,9 +5,13 @@ import "bootstrap/dist/css/bootstrap.css";
 import SingleItem from "./SingleItem/SingleItem";
 import { useNavigate } from "react-router-dom";
 import { gamesWeb } from "../../Redux/Store";
-import { downloadGamesAction } from "../../Redux/GamesReducer";
+import {
+  downloadGamesAction,
+  topRatedGamesAction,
+} from "../../Redux/GamesReducer";
 import Game from "../../Modals/GameModal";
 import SearchFilters from "./SearchFilters/SearchFilters";
+import { useSelector } from "react-redux";
 
 function Games(): JSX.Element {
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,6 +19,10 @@ function Games(): JSX.Element {
   const [allGames, setAllGames] = useState<Game[]>([]);
   const [filteredGames, setFilteredGames] = useState<Game[]>([]);
   const navigate = useNavigate();
+  const isTopRatedFilter = useSelector(
+    (state: any) => state.games.isTopRatedFilter
+  ); // Get the top-rated filter state
+  // const state = useSelector((state: any) => state.games.isTopRatedFilter);
 
   useEffect(() => {
     if (gamesWeb.getState().games.allGames.length === 0) {
@@ -29,10 +37,17 @@ function Games(): JSX.Element {
         });
     } else {
       const allGames = gamesWeb.getState().games.allGames;
+
+      let gamesToDisplay = isTopRatedFilter
+        ? allGames
+            .slice()
+            .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
+        : allGames;
+      setAllGames(gamesToDisplay);
+
       console.log(allGames);
-      setAllGames(allGames);
     }
-  }, [allGames]);
+  }, [isTopRatedFilter]);
 
   const unsubscribe = gamesWeb.subscribe(() => {
     // When the games state changes (e.g., due to searchGameAction),

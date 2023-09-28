@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import { GameReducer } from "./GamesReducer";
 import { configureStore } from "@reduxjs/toolkit";
 import { UserReducer } from "./UsersReducer";
+import thunk from 'redux-thunk';
 
 
 const reducers = combineReducers({
@@ -11,8 +12,10 @@ const reducers = combineReducers({
 
 const initialState = {
     games: {
-      allGames: [], // Initialize with an empty array or some default data
+      allGames: [], // מצב התחלתי ל defult
       allFilteredGames: [],
+      isTopRatedFilter: false, 
+
     },
     users: {
       allUsers: [],    },
@@ -22,5 +25,5 @@ export const gamesWeb = configureStore({
     reducer: reducers,
     preloadedState: initialState, // Provide the initial state here
     middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }),
+    getDefaultMiddleware().concat(thunk), 
 })
