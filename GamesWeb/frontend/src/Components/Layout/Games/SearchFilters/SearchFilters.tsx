@@ -65,14 +65,26 @@ function SearchFilters(): JSX.Element {
             variant="outlined">
             <Favorite color="error" />
           </Button>
-          <Button
-            type="button"
-            color="warning"
-            id="topRatedFilter"
-            variant="outlined"
-            onClick={handleFilterTopRatedClick}>
-            <MilitaryTech color="primary" />
-          </Button>
+          {isTopRatedFilter ? (
+            <Button
+              type="button"
+              color="warning"
+              id="topRatedFilter"
+              variant="contained"
+              onClick={handleFilterTopRatedClick}>
+              <MilitaryTech color="primary" />
+            </Button>
+          ) : (
+            <Button
+              type="button"
+              color="warning"
+              id="topRatedFilter"
+              variant="outlined"
+              onClick={handleFilterTopRatedClick}>
+              <MilitaryTech color="primary" />
+            </Button>
+          )}
+
           <Button
             type="button"
             color="warning"

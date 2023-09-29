@@ -17,7 +17,7 @@ function Games(): JSX.Element {
   const [currentPage, setCurrentPage] = useState(1);
   const gamesPerPage = 12;
   const [allGames, setAllGames] = useState<Game[]>([]);
-  const [filteredGames, setFilteredGames] = useState<Game[]>([]);
+  const [searchedGames, setSearchedGames] = useState<Game[]>([]);
   const navigate = useNavigate();
   const isTopRatedFilter = useSelector(
     (state: any) => state.games.isTopRatedFilter
@@ -37,24 +37,60 @@ function Games(): JSX.Element {
         });
     } else {
       const allGames = gamesWeb.getState().games.allGames;
+      setAllGames(allGames);
+      // console.log(allGames);
 
-      let gamesToDisplay = isTopRatedFilter
-        ? allGames
-            .slice()
-            .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
-        : allGames;
-      setAllGames(gamesToDisplay);
-
-      console.log(allGames);
+      //   let gamesToDisplay = isTopRatedFilter
+      //     ? allGames
+      //         .slice()
+      //         .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
+      //     : allGames;
+      //   console.log(gamesToDisplay);
+      //   setAllGames(gamesToDisplay);
     }
+    topRatedFilterCheck();
   }, [isTopRatedFilter]);
+
+  useEffect(() => {
+    // Watch for changes in the searchedGames array and apply sorting
+    if (searchedGames.length > 0 && isTopRatedFilter) {
+      const gamesToDisplay = searchedGames
+        .slice()
+        .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating));
+      setSearchedGames(gamesToDisplay);
+    }
+  }, [searchedGames, isTopRatedFilter]);
 
   const unsubscribe = gamesWeb.subscribe(() => {
     // When the games state changes (e.g., due to searchGameAction),
     // update the filtered games state
     const filtered = gamesWeb.getState().games.allFilteredGames;
-    setFilteredGames(filtered);
+    setSearchedGames(filtered);
+
+    // if (filtered.length > 0 && isTopRatedFilter) {
+    //   console.log("Inside Search: ", searchedGames);
+
+    //   let gamesToDisplay = searchedGames
+    //     ? filtered
+    //         .slice()
+    //         .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
+    //     : filtered;
+    //   console.log(gamesToDisplay);
+    //   setSearchedGames(gamesToDisplay);
+    // }
   });
+
+  const topRatedFilterCheck = () => {
+    if (isTopRatedFilter && searchedGames.length === 0) {
+      let gamesToDisplay = isTopRatedFilter
+        ? allGames
+            .slice()
+            .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
+        : allGames;
+      console.log(gamesToDisplay);
+      setAllGames(gamesToDisplay);
+    }
+  };
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -64,8 +100,8 @@ function Games(): JSX.Element {
     // const totalPages = Math.ceil(filteredGames.length / gamesPerPage);
 
     const totalPages = Math.ceil(
-      filteredGames.length > 0
-        ? filteredGames.length / gamesPerPage
+      searchedGames.length > 0
+        ? searchedGames.length / gamesPerPage
         : allGames.length / gamesPerPage
     );
 
@@ -104,8 +140,8 @@ function Games(): JSX.Element {
   // אם אין חיפוש - תציג את כל המשחקים
   // אם יש חיפוש - תציג את המשחקים שחופשו
   const currentGames =
-    filteredGames.length > 0
-      ? filteredGames.slice(indexOfFirstGame, indexOfLastGame)
+    searchedGames.length > 0
+      ? searchedGames.slice(indexOfFirstGame, indexOfLastGame)
       : allGames.slice(indexOfFirstGame, indexOfLastGame);
 
   // const currentGames = filteredGames.slice(indexOfFirstGame, indexOfLastGame);

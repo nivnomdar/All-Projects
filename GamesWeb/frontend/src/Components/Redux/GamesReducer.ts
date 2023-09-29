@@ -52,7 +52,7 @@ export function downloadGamesAction(allGames:Game[]){
 
   export const topRatedGamesAction = (isTopRated: boolean): GameAction => ({
    type: GameActionType.topRatedFilter,
-   payload: isTopRated,
+   payload: isTopRated
   });
 
 //-----------------------------------------------------------
@@ -98,7 +98,7 @@ switch (action.type) {
 
     case GameActionType.topRatedFilter:
       newState.isTopRatedFilter  = action.payload;
-      // console.log("Redux Top Rated. Games matched:", newState.allGames);
+      console.log("Redux Top Rated. Games matched:", action.payload);
     break;
 }
 return newState;
