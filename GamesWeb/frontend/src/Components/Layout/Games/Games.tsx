@@ -38,15 +38,6 @@ function Games(): JSX.Element {
     } else {
       const allGames = gamesWeb.getState().games.allGames;
       setAllGames(allGames);
-      // console.log(allGames);
-
-      //   let gamesToDisplay = isTopRatedFilter
-      //     ? allGames
-      //         .slice()
-      //         .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
-      //     : allGames;
-      //   console.log(gamesToDisplay);
-      //   setAllGames(gamesToDisplay);
     }
     topRatedFilterCheck();
   }, [isTopRatedFilter]);
@@ -62,22 +53,8 @@ function Games(): JSX.Element {
   }, [searchedGames, isTopRatedFilter]);
 
   const unsubscribe = gamesWeb.subscribe(() => {
-    // When the games state changes (e.g., due to searchGameAction),
-    // update the filtered games state
     const filtered = gamesWeb.getState().games.allFilteredGames;
     setSearchedGames(filtered);
-
-    // if (filtered.length > 0 && isTopRatedFilter) {
-    //   console.log("Inside Search: ", searchedGames);
-
-    //   let gamesToDisplay = searchedGames
-    //     ? filtered
-    //         .slice()
-    //         .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
-    //     : filtered;
-    //   console.log(gamesToDisplay);
-    //   setSearchedGames(gamesToDisplay);
-    // }
   });
 
   const topRatedFilterCheck = () => {
@@ -97,8 +74,6 @@ function Games(): JSX.Element {
   };
 
   const renderPaginationNumbers = () => {
-    // const totalPages = Math.ceil(filteredGames.length / gamesPerPage);
-
     const totalPages = Math.ceil(
       searchedGames.length > 0
         ? searchedGames.length / gamesPerPage

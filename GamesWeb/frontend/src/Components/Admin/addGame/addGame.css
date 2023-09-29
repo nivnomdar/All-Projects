@@ -1,16 +1,32 @@
 .addGame {
-    color: white;
+    color: white !important;
     padding: 25px; 
 
   }
   
 
-.Inputs{
-  color: white;
+.inputs{
+  color: white !important;
 
 }
 
-input[type="text"],
+.textInputs input::placeholder {
+  color: gray; /* Change this to 'white' if you want white placeholders */
+  font-style:  white normal;
+}
+
+.textInputs input {
+  color: white; /* Change this to 'gray' if you want gray text */
+  font-style: normal;
+}
+
+.textInputs {
+  border: 2px solid gray !important;
+  margin: 4px 20px !important;
+  text-align: left;
+}
+
+/* input[type="text"],
 input[type="number"]
   {
   color: white; 
@@ -18,9 +34,11 @@ input[type="number"]
   padding: 10px;
   margin: 5px 25px;
   
+} */
+
+.whiteText {
+  color: white;
 }
-
-
 
 
 .checkboxs {

@@ -75,115 +75,115 @@ function AddGame(): JSX.Element {
 
   return (
     <div className="addGame">
-      <div className="Inputs">
-        <Typography variant="h5">Add Game</Typography>
-        <br />
-        <TextField
-          required
-          type="text"
-          variant="outlined"
-          color="error"
-          className="gameName"
-          placeholder="Game name"
-          value={formData.game_name}
-          onChange={handleInputChange}
-          name="game_name"
-        />
-        <TextField
-          required
-          type="text"
-          variant="outlined"
-          className="releaseDate"
-          placeholder="Release date"
-          value={formData.release_date}
-          onChange={handleInputChange}
-          name="release_date"
-        />
-        <br />
-        <TextField
-          required
-          type="text"
-          variant="outlined"
-          className="categories"
-          placeholder="Categories"
-          value={formData.categories}
-          onChange={handleInputChange}
-          name="categories"
-        />
-        <TextField
-          required
-          type="text"
-          variant="outlined"
-          className="platforms"
-          placeholder="Platforms"
-          value={formData.platforms}
-          onChange={handleInputChange}
-          name="platforms"
-        />
-        <br />
-        <TextField
-          required
-          type="text"
-          variant="outlined"
-          className="developer"
-          placeholder="Developer"
-          value={formData.developer}
-          onChange={handleInputChange}
-          name="developer"
-        />
-        <TextField
-          required
-          type="text"
-          variant="outlined"
-          className="publisher"
-          placeholder="Publisher"
-          value={formData.publisher}
-          onChange={handleInputChange}
-          name="publisher"
-        />
-        <br />
-        <TextField
-          required
-          type="text"
-          variant="outlined"
-          className="shortDescription"
-          placeholder="Short description"
-          value={formData.short_description}
-          onChange={handleInputChange}
-          name="short_description"
-        />
-        <TextField
-          required
-          type="text"
-          variant="outlined"
-          className="imageURL"
-          placeholder="Image URL"
-          value={formData.image_url}
-          onChange={handleInputChange}
-          name="image_url"
-        />
-        <br />
-        <TextField
-          required
-          type="number"
-          variant="outlined"
-          className="rating"
-          placeholder="Rating"
-          value={formData.rating}
-          onChange={handleInputChange}
-          name="rating"
-        />
-        <TextField
-          required
-          type="number"
-          variant="outlined"
-          className="price"
-          placeholder="Price"
-          value={formData.price}
-          onChange={handleInputChange}
-          name="price"
-        />
-        <br />
+      <form noValidate autoComplete="off">
+        <div className="inputs">
+          <Typography variant="h5">Add Game</Typography>
+          <br />
+          <TextField
+            required
+            type="text"
+            variant="outlined"
+            color="error"
+            className="textInputs" // Add the "whiteText" class here
+            placeholder="Game name"
+            value={formData.game_name}
+            onChange={handleInputChange}
+            name="game_name"
+          />
+          <TextField
+            required
+            type="text"
+            variant="outlined"
+            className="textInputs"
+            placeholder="Release date"
+            value={formData.release_date}
+            onChange={handleInputChange}
+            name="release_date"
+          />
+          <br />
+          <TextField
+            required
+            type="text"
+            variant="outlined"
+            className="textInputs"
+            placeholder="Categories"
+            value={formData.categories}
+            onChange={handleInputChange}
+            name="categories"
+          />
+          <TextField
+            required
+            type="text"
+            variant="outlined"
+            className="textInputs"
+            placeholder="Platforms"
+            value={formData.platforms}
+            onChange={handleInputChange}
+            name="platforms"
+          />
+          <br />
+          <TextField
+            required
+            type="text"
+            variant="outlined"
+            className="textInputs"
+            placeholder="Developer"
+            value={formData.developer}
+            onChange={handleInputChange}
+            name="developer"
+          />
+          <TextField
+            required
+            type="text"
+            variant="outlined"
+            className="textInputs"
+            placeholder="Publisher"
+            value={formData.publisher}
+            onChange={handleInputChange}
+            name="publisher"
+          />
+          <br />
+          <TextField
+            required
+            type="text"
+            variant="outlined"
+            className="textInputs"
+            placeholder="Short description"
+            value={formData.short_description}
+            onChange={handleInputChange}
+            name="short_description"
+          />
+          <TextField
+            required
+            type="text"
+            variant="outlined"
+            className="textInputs"
+            placeholder="Image URL"
+            value={formData.image_url}
+            onChange={handleInputChange}
+            name="image_url"
+          />
+          <br />
+          <TextField
+            type="number"
+            variant="filled"
+            className="textInputs"
+            placeholder="Rating"
+            value={formData.rating}
+            onChange={handleInputChange}
+            name="rating"
+          />
+          <TextField
+            required
+            type="number"
+            variant="outlined"
+            className="textInputs"
+            placeholder="Price"
+            value={formData.price}
+            onChange={handleInputChange}
+            name="price"
+          />
+        </div>
         <div className="checkboxs">
           <div className="checkboxContainer">
             <Checkbox
@@ -234,7 +234,7 @@ function AddGame(): JSX.Element {
           </div>
           <br /> <br />
         </div>
-      </div>
+      </form>
     </div>
   );
 }
