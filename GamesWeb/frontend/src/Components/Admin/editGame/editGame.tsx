@@ -64,9 +64,10 @@ function EditGame(): JSX.Element {
             achievements: game.achievements,
             image_url: game.image_url,
           });
-          console.log(editForm.multiplayer);
+          // console.log(editForm.multiplayer);
         } catch (error) {
           console.log(error);
+          alert(error);
         }
       };
       fetchGame();
@@ -113,6 +114,7 @@ function EditGame(): JSX.Element {
         gamesWeb.dispatch(updateGameAction(updatedGame));
         console.log("Game updataed successfully");
         alert("Game updataed successfully");
+        navigate("/home");
       })
 
       // navigate("/adminHome");
@@ -127,124 +129,142 @@ function EditGame(): JSX.Element {
       <Typography variant="h3" className="HeadLine">
         Edit: {editForm.game_name}
       </Typography>
-      <br />
-      <div className="textFields">
-        <TextField
-          type="text"
-          variant="outlined"
-          className="gameName"
-          placeholder="Game name"
-          value={editForm.game_name}
-          onChange={handleInputChange}
-          name="game_name"
-        />
-        <TextField
-          type="text"
-          variant="outlined"
-          className="releaseDate"
-          placeholder="Release date"
-          value={editForm.release_date}
-          onChange={handleInputChange}
-          name="release_date"
-        />
+      <div className="inputs">
         <br />
-        <TextField
-          type="text"
-          variant="outlined"
-          className="categories"
-          placeholder="Categories"
-          value={editForm.categories}
-          onChange={handleInputChange}
-          name="categories"
-        />
-        <TextField
-          type="text"
-          variant="outlined"
-          className="platforms"
-          placeholder="Platforms"
-          value={editForm.platforms}
-          onChange={handleInputChange}
-          name="platforms"
-        />
+        <div className="textFields">
+          <TextField
+            label="Game name"
+            color="error"
+            type="text"
+            variant="filled"
+            className="textInputs"
+            placeholder="Game name"
+            value={editForm.game_name}
+            onChange={handleInputChange}
+            name="game_name"
+          />
+          <TextField
+            id="date"
+            label="Release date"
+            type="date"
+            variant="filled"
+            className="textInputs"
+            placeholder="Release date"
+            value={editForm.release_date}
+            onChange={handleInputChange}
+            name="release_date"
+            style={{ width: 220 }}
+          />
+          <br />
+          <TextField
+            label="Categories"
+            type="text"
+            variant="filled"
+            className="textInputs"
+            placeholder="Categories"
+            value={editForm.categories}
+            onChange={handleInputChange}
+            name="categories"
+          />
+          <TextField
+            label="Platforms"
+            type="text"
+            variant="filled"
+            className="textInputs"
+            placeholder="Platforms"
+            value={editForm.platforms}
+            onChange={handleInputChange}
+            name="platforms"
+          />
+          <br />
+          <TextField
+            label="Developer"
+            type="text"
+            variant="filled"
+            className="textInputs"
+            placeholder="Developer"
+            value={editForm.developer}
+            onChange={handleInputChange}
+            name="developer"
+          />
+          <TextField
+            label="Publisher"
+            type="text"
+            variant="filled"
+            className="textInputs"
+            placeholder="Publisher"
+            value={editForm.publisher}
+            onChange={handleInputChange}
+            name="publisher"
+          />
+          <br />
+          <TextField
+            label="Short description"
+            type="text"
+            variant="filled"
+            className="textInputs"
+            placeholder="Short description"
+            value={editForm.short_description}
+            onChange={handleInputChange}
+            name="short_description"
+          />
+          <TextField
+            label="Image URL"
+            type="text"
+            variant="filled"
+            className="textInputs"
+            placeholder="Image URL"
+            value={editForm.image_url}
+            onChange={handleInputChange}
+            name="image_url"
+          />
+          <br />
+          <TextField
+            label="Rating"
+            type="number"
+            variant="filled"
+            className="textInputs"
+            placeholder="Rating"
+            value={editForm.rating}
+            onChange={handleInputChange}
+            name="rating"
+          />
+          <TextField
+            label="Price"
+            type="number"
+            variant="filled"
+            className="textInputs"
+            placeholder="Price"
+            value={editForm.price}
+            onChange={handleInputChange}
+            name="price"
+          />
+        </div>
         <br />
-        <TextField
-          type="text"
-          variant="outlined"
-          className="developer"
-          placeholder="Developer"
-          value={editForm.developer}
-          onChange={handleInputChange}
-          name="developer"
-        />
-        <TextField
-          type="text"
-          variant="outlined"
-          className="publisher"
-          placeholder="Publisher"
-          value={editForm.publisher}
-          onChange={handleInputChange}
-          name="publisher"
-        />
-        <br />
-        <TextField
-          type="text"
-          variant="outlined"
-          className="shortDescription"
-          placeholder="Short description"
-          value={editForm.short_description}
-          onChange={handleInputChange}
-          name="short_description"
-        />
-        <TextField
-          type="text"
-          variant="outlined"
-          className="imageURL"
-          placeholder="Image URL"
-          value={editForm.image_url}
-          onChange={handleInputChange}
-          name="image_url"
-        />
-        <br />
-        <TextField
-          type="number"
-          variant="outlined"
-          className="rating"
-          placeholder="Rating"
-          value={editForm.rating}
-          onChange={handleInputChange}
-          name="rating"
-        />
-        <TextField
-          type="number"
-          variant="outlined"
-          className="price"
-          placeholder="Price"
-          value={editForm.price}
-          onChange={handleInputChange}
-          name="price"
-        />
-        <br />
-        <Typography variant="body2">Multiplayer</Typography>
         <div className="checkboxs">
-          <Checkbox
-            color="warning"
-            className="multiplayer"
-            placeholder="Multiplayer"
-            checked={editForm.multiplayer === 1} // Set checked based on value
-            onChange={handleInputChange}
-            name="multiplayer"
-          />
-          <Typography variant="body2">Mod support</Typography>
-          <Checkbox
-            color="warning"
-            className="modSupport"
-            placeholder="Mod support"
-            checked={editForm.mod_support === 1} // Set checked based on value
-            name="mod_support"
-            onChange={handleInputChange}
-          />
-          <Typography variant="body2">
-            Achievements
+          <div className="checkboxContainer">
+            <Checkbox
+              color="warning"
+              className="multiplayer"
+              placeholder="Multiplayer"
+              checked={editForm.multiplayer === 1} // Set checked based on value
+              onChange={handleInputChange}
+              name="multiplayer"
+            />
+            <Typography variant="body2">Multiplayer</Typography>
+          </div>
+          <div className="checkboxContainer">
+            <Checkbox
+              color="warning"
+              className="modSupport"
+              placeholder="Mod support"
+              checked={editForm.mod_support === 1} // Set checked based on value
+              name="mod_support"
+              onChange={handleInputChange}
+            />
+            <Typography variant="body2">Mod support</Typography>
+          </div>
+          <div className="checkboxContainer">
             <Checkbox
               color="warning"
               className="achievements"
@@ -253,16 +273,17 @@ function EditGame(): JSX.Element {
               name="achievements"
               onChange={handleInputChange}
             />
-          </Typography>
+            <Typography variant="body2">Achievements </Typography>
+          </div>
         </div>
       </div>
       <br /> <br />
       <Button
         type="button"
-        color="success"
+        color="warning"
         variant="contained"
         onClick={handleEditGameButton}>
-        <CheckCircleOutline />
+        Edit game <CheckCircleOutline />
       </Button>
       <br /> <br />
     </div>

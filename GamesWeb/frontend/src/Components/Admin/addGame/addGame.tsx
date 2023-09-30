@@ -75,36 +75,38 @@ function AddGame(): JSX.Element {
 
   return (
     <div className="addGame">
-      <form noValidate autoComplete="off">
-        <div className="inputs">
-          <Typography variant="h5">Add Game</Typography>
-          <br />
+      <Typography variant="h5">Add Game</Typography>
+      <div className="inputs">
+        <br />
+        <div className="textFields">
           <TextField
-            required
+            label="Game name"
             type="text"
-            variant="outlined"
+            variant="filled"
             color="error"
-            className="textInputs" // Add the "whiteText" class here
+            className="textInputs"
             placeholder="Game name"
             value={formData.game_name}
             onChange={handleInputChange}
             name="game_name"
           />
           <TextField
-            required
-            type="text"
-            variant="outlined"
+            id="date"
+            label="Release date"
+            type="date"
+            variant="filled"
             className="textInputs"
             placeholder="Release date"
             value={formData.release_date}
             onChange={handleInputChange}
             name="release_date"
+            style={{ width: 220 }}
           />
           <br />
           <TextField
-            required
+            label="Categories"
             type="text"
-            variant="outlined"
+            variant="filled"
             className="textInputs"
             placeholder="Categories"
             value={formData.categories}
@@ -112,9 +114,9 @@ function AddGame(): JSX.Element {
             name="categories"
           />
           <TextField
-            required
+            label="Platforms"
             type="text"
-            variant="outlined"
+            variant="filled"
             className="textInputs"
             placeholder="Platforms"
             value={formData.platforms}
@@ -123,9 +125,9 @@ function AddGame(): JSX.Element {
           />
           <br />
           <TextField
-            required
+            label="Developer"
             type="text"
-            variant="outlined"
+            variant="filled"
             className="textInputs"
             placeholder="Developer"
             value={formData.developer}
@@ -133,9 +135,9 @@ function AddGame(): JSX.Element {
             name="developer"
           />
           <TextField
-            required
+            label="Publisher"
             type="text"
-            variant="outlined"
+            variant="filled"
             className="textInputs"
             placeholder="Publisher"
             value={formData.publisher}
@@ -144,9 +146,9 @@ function AddGame(): JSX.Element {
           />
           <br />
           <TextField
-            required
+            label="Short description"
             type="text"
-            variant="outlined"
+            variant="filled"
             className="textInputs"
             placeholder="Short description"
             value={formData.short_description}
@@ -154,9 +156,9 @@ function AddGame(): JSX.Element {
             name="short_description"
           />
           <TextField
-            required
+            label="Image URL"
             type="text"
-            variant="outlined"
+            variant="filled"
             className="textInputs"
             placeholder="Image URL"
             value={formData.image_url}
@@ -165,6 +167,7 @@ function AddGame(): JSX.Element {
           />
           <br />
           <TextField
+            label="Rating"
             type="number"
             variant="filled"
             className="textInputs"
@@ -174,9 +177,9 @@ function AddGame(): JSX.Element {
             name="rating"
           />
           <TextField
-            required
+            label="Price"
             type="number"
-            variant="outlined"
+            variant="filled"
             className="textInputs"
             placeholder="Price"
             value={formData.price}
@@ -226,15 +229,15 @@ function AddGame(): JSX.Element {
           <div className="AddButton">
             <Button
               type="button"
-              color="primary"
+              color="warning"
               variant="contained"
               onClick={addNewGame}>
-              <AddCircleOutline />
+              Add game <AddCircleOutline />
             </Button>
           </div>
-          <br /> <br />
         </div>
-      </form>
+        <br /> <br />
+      </div>
     </div>
   );
 }

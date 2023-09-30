@@ -1,7 +1,49 @@
 .editGame {
-	
+    padding: 25px; 
+    color: white; /* Change this to 'white' if you want white placeholders */
+
 }
 
-.HeadLine {
-    
-}
+
+.textInputs input::placeholder {
+    color: gray; /* Change this to 'white' if you want white placeholders */
+    font-style:  white normal;
+  }
+  
+  .textInputs input {
+    color: white; /* Change this to 'gray' if you want gray text */
+    font-style: normal;
+  }
+  
+  .textInputs {
+    border: 2px solid gray !important;
+    margin: 4px 20px !important;
+    text-align: left;
+  }
+
+  .checkboxs {
+    display: inline-block; 
+    margin: 5px;
+  
+  }
+  
+  .checkboxContainer {
+    display: inline-block; 
+    align-items: center;
+    margin: 5px 35px;
+  
+  }
+
+
+  /* .checkboxs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+  }
+  
+  .checkboxContainer {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+  } */

@@ -38,7 +38,7 @@ function SearchFilters(): JSX.Element {
         console.log("new Loading:", result.length);
         setAllGames(result);
       });
-  }, []);
+  }, [isTopRatedFilter]);
 
   const handleSearchGame = () => {
     const searchText = filters.searchText.toLowerCase();
@@ -84,7 +84,6 @@ function SearchFilters(): JSX.Element {
               <MilitaryTech color="primary" />
             </Button>
           )}
-
           <Button
             type="button"
             color="warning"
