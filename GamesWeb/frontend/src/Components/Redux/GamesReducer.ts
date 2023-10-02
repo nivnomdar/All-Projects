@@ -4,7 +4,7 @@ export class GameState {
     public allGames: Game[] = [];
     public allFilteredGames: Game[] = [];
     public isTopRatedFilter: boolean = false; // top-rated filter state
-
+    public allGamesByCategory: Game[] = [];
 }
 
 //-----------------------------------------------------------
@@ -15,8 +15,8 @@ export enum GameActionType {
     searchGame = "searchGame",
     downloadGames = "downloadGames",
     updateGame = "updateGame",
-    filteredGames = "filteredGames",
     topRatedFilter = "topRatedFilter",
+    selectedCategory = "selectedCategory",
 }
 
 export interface GameAction {
@@ -46,14 +46,17 @@ export function downloadGamesAction(allGames:Game[]){
     return { type: GameActionType.updateGame, payload: updatedGame };
   }
 
-  export function filteredGamesAction(allFilteredGames: Game[]) {
-    return { type: GameActionType.filteredGames, payload: allFilteredGames};
-}
 
   export const topRatedGamesAction = (isTopRated: boolean): GameAction => ({
    type: GameActionType.topRatedFilter,
    payload: isTopRated
   });
+
+  export function selectedCategoryAction (category: string): GameAction {
+    return {type: GameActionType.selectedCategory, payload: category}
+  };
+
+
 
 //-----------------------------------------------------------
 
@@ -93,13 +96,19 @@ switch (action.type) {
       );
     break;
 
-    case GameActionType.filteredGames: newState.allGames = action.payload;
-    break;
 
     case GameActionType.topRatedFilter:
       newState.isTopRatedFilter  = action.payload;
       console.log("Redux Top Rated. Games matched:", action.payload);
     break;
+
+    case GameActionType.selectedCategory:
+      newState.allGamesByCategory =  newState.allGames.filter((game) => 
+      game.categories.split(", ").map((category) => category.trim()).includes(action.payload));
+      console.log("Redux Category: ", newState.allGamesByCategory.length)
+    break;
+
+
 }
 return newState;
 }

@@ -1,6 +1,20 @@
-import { Autocomplete, Button, TextField } from "@mui/material";
+import {
+  Autocomplete,
+  Button,
+  Divider,
+  FormControl,
+  InputLabel,
+  List,
+  ListItem,
+  ListItemText,
+  MenuItem,
+  Popover,
+  Select,
+  TextField,
+} from "@mui/material";
 import "./SearchFilters.css";
 import {
+  BorderAll,
   Favorite,
   MilitaryTech,
   MonetizationOnOutlined,
@@ -10,24 +24,30 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import {
   downloadGamesAction,
-  filteredGamesAction,
   searchGameAction,
+  selectedCategoryAction,
   topRatedGamesAction,
 } from "../../../Redux/GamesReducer";
 import Game from "../../../Modals/GameModal";
 import { gamesWeb } from "../../../Redux/Store";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function SearchFilters(): JSX.Element {
   const [allGames, setAllGames] = useState<Game[]>([]);
+
   const [filters, setFilter] = useState({
     favorites: false,
     priceFilter: false,
     searchText: "",
+    categories: "",
   });
   const isTopRatedFilter = useSelector(
     (state: any) => state.games.isTopRatedFilter
   );
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios
@@ -38,7 +58,7 @@ function SearchFilters(): JSX.Element {
         console.log("new Loading:", result.length);
         setAllGames(result);
       });
-  }, [isTopRatedFilter]);
+  }, []);
 
   const handleSearchGame = () => {
     const searchText = filters.searchText.toLowerCase();
@@ -53,6 +73,27 @@ function SearchFilters(): JSX.Element {
     game_id: game.game_id,
     game_name: game.game_name,
   }));
+
+  //  לחיצה על כפתור בחירת קטגוריה
+  const handleCategoryButtonClick = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  //  סגירת פילטר בחירת קטגוריה
+  const handleCategoryClose = () => {
+    setAnchorEl(null);
+  };
+
+  //  בחירת קטגוריה
+  const handleCategorySelect = (category: string) => {
+    console.log("Chosen category: ", category);
+    setSelectedCategory(category);
+    dispatch(selectedCategoryAction(category));
+
+    handleCategoryClose();
+  };
 
   return (
     <div className="SearchFilters">
@@ -91,6 +132,78 @@ function SearchFilters(): JSX.Element {
             variant="outlined">
             <MonetizationOnOutlined color="success" />
           </Button>
+          <Button
+            type="button"
+            color="warning"
+            id="categories"
+            variant="outlined"
+            onClick={handleCategoryButtonClick}>
+            <BorderAll color="secondary" />
+          </Button>
+
+          <Popover
+            open={Boolean(anchorEl)}
+            anchorEl={anchorEl}
+            onClose={handleCategoryClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            PaperProps={{ style: { maxHeight: "200px" } }} // Adjust the maxHeight as needed
+          >
+            <List>
+              <ListItem onClick={() => handleCategorySelect("")}>
+                <ListItemText primary="All Categories" />
+              </ListItem>
+              <Divider />
+              {Array.from(
+                new Set(
+                  allGames
+                    .flatMap((game) =>
+                      game.categories
+                        .split(", ")
+                        .map((category) => category.trim())
+                    )
+                    .sort()
+                )
+              ).map((category) => (
+                <ListItem
+                  key={category}
+                  onClick={() => handleCategorySelect(category)}>
+                  <ListItemText primary={category} />
+                </ListItem>
+              ))}
+            </List>
+          </Popover>
+
+          {/* <FormControl variant="outlined" sx={{ minWidth: 200 }}>
+            <InputLabel id="category-label" color="warning">
+              Category
+            </InputLabel>
+            <Select
+              variant="filled"
+              color="warning"
+              labelId="category-label"
+              id="category-select"
+              value={selectedCategory}
+              onChange={(event) => setSelectedCategory(event.target.value)}
+              label="Category">
+              <MenuItem value="">All Categories</MenuItem>
+              {Array.from(
+                new Set(
+                  allGames.flatMap((game) => game.categories.split(", ")) // Split categories by ', ' and flatten the result
+                )
+              ).map((category) => (
+                <MenuItem key={category} value={category}>
+                  {category}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl> */}
         </div>
       </div>
       <div className="column right">

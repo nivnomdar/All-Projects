@@ -4,6 +4,8 @@
     align-items: center; 
     gap: 20px; 
     background-color: black;
+    color: white;
+
 }
 
   .column {

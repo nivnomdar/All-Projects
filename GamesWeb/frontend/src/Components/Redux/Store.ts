@@ -15,7 +15,7 @@ const initialState = {
       allGames: [], // מצב התחלתי ל defult
       allFilteredGames: [],
       isTopRatedFilter: false, 
-
+      allGamesByCategory: [],
     },
     users: {
       allUsers: [],    },

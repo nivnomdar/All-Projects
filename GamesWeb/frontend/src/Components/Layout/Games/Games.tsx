@@ -5,10 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import SingleItem from "./SingleItem/SingleItem";
 import { useNavigate } from "react-router-dom";
 import { gamesWeb } from "../../Redux/Store";
-import {
-  downloadGamesAction,
-  topRatedGamesAction,
-} from "../../Redux/GamesReducer";
+import { downloadGamesAction } from "../../Redux/GamesReducer";
 import Game from "../../Modals/GameModal";
 import SearchFilters from "./SearchFilters/SearchFilters";
 import { useSelector } from "react-redux";
@@ -18,11 +15,16 @@ function Games(): JSX.Element {
   const gamesPerPage = 12;
   const [allGames, setAllGames] = useState<Game[]>([]);
   const [searchedGames, setSearchedGames] = useState<Game[]>([]);
-  const navigate = useNavigate();
   const isTopRatedFilter = useSelector(
     (state: any) => state.games.isTopRatedFilter
-  ); // Get the top-rated filter state
-  // const state = useSelector((state: any) => state.games.isTopRatedFilter);
+  );
+  const allFilteredGames = useSelector(
+    (state: any) => state.games.allFilteredGames
+  );
+  const allGamesByCategory = useSelector(
+    (state: any) => state.games.allGamesByCategory
+  );
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (gamesWeb.getState().games.allGames.length === 0) {
@@ -43,7 +45,6 @@ function Games(): JSX.Element {
   }, [isTopRatedFilter]);
 
   useEffect(() => {
-    // Watch for changes in the searchedGames array and apply sorting
     if (searchedGames.length > 0 && isTopRatedFilter) {
       const gamesToDisplay = searchedGames
         .slice()
@@ -52,10 +53,26 @@ function Games(): JSX.Element {
     }
   }, [searchedGames, isTopRatedFilter]);
 
-  const unsubscribe = gamesWeb.subscribe(() => {
-    const filtered = gamesWeb.getState().games.allFilteredGames;
-    setSearchedGames(filtered);
-  });
+  useEffect(() => {
+    setSearchedGames(allFilteredGames);
+  }, [allFilteredGames]);
+
+  useEffect(() => {
+    if (allGamesByCategory.length > 0) {
+      console.log("Filtered Games: ", allGamesByCategory.length);
+    }
+  }, [allGamesByCategory]);
+
+  // const searchedGamesHandle = gamesWeb.subscribe(() => {
+  //   const filtered = gamesWeb.getState().games.allFilteredGames;
+  //   setSearchedGames(filtered);
+  // });
+
+  // const searchedGamesByCategoryHandle = gamesWeb.subscribe(() => {
+  //   const filteredCategory = gamesWeb.getState().games.allGamesByCategory;
+  //   console.log("Filtered Games: ", filteredCategory.length);
+  //   setSearchedGamesByCategory(filteredCategory);
+  // });
 
   const topRatedFilterCheck = () => {
     if (isTopRatedFilter && searchedGames.length === 0) {
@@ -64,7 +81,7 @@ function Games(): JSX.Element {
             .slice()
             .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
         : allGames;
-      console.log(gamesToDisplay);
+      // console.log(gamesToDisplay);
       setAllGames(gamesToDisplay);
     }
   };
@@ -112,8 +129,6 @@ function Games(): JSX.Element {
   const indexOfLastGame = currentPage * gamesPerPage;
   const indexOfFirstGame = indexOfLastGame - gamesPerPage;
 
-  // אם אין חיפוש - תציג את כל המשחקים
-  // אם יש חיפוש - תציג את המשחקים שחופשו
   const currentGames =
     searchedGames.length > 0
       ? searchedGames.slice(indexOfFirstGame, indexOfLastGame)
