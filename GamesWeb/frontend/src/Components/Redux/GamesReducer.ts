@@ -98,8 +98,8 @@ switch (action.type) {
 
 
     case GameActionType.topRatedFilter:
-      newState.isTopRatedFilter  = action.payload;
-      console.log("Redux Top Rated. Games matched:", action.payload);
+      newState.isTopRatedFilter = action.payload;
+      console.log("Redux Games matched:", newState.isTopRatedFilter);
     break;
 
     case GameActionType.selectedCategory:

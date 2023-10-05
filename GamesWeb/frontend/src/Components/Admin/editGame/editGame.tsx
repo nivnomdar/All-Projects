@@ -126,7 +126,7 @@ function EditGame(): JSX.Element {
 
   return (
     <div className="editGame">
-      <Typography variant="h3" className="HeadLine">
+      <Typography variant="h5" className="HeadLine">
         Edit: {editForm.game_name}
       </Typography>
       <div className="inputs">
@@ -277,7 +277,6 @@ function EditGame(): JSX.Element {
           </div>
         </div>
       </div>
-      <br /> <br />
       <Button
         type="button"
         color="warning"

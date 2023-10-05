@@ -44,14 +44,15 @@ function Games(): JSX.Element {
     topRatedFilterCheck();
   }, [isTopRatedFilter]);
 
-  useEffect(() => {
-    if (searchedGames.length > 0 && isTopRatedFilter) {
-      const gamesToDisplay = searchedGames
-        .slice()
-        .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating));
-      setSearchedGames(gamesToDisplay);
-    }
-  }, [searchedGames, isTopRatedFilter]);
+  // חיפוש
+  // useEffect(() => {
+  //   if (searchedGames.length > 0 && isTopRatedFilter) {
+  //     const gamesToDisplay = searchedGames
+  //       .slice()
+  //       .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating));
+  //     setSearchedGames(gamesToDisplay);
+  //   }
+  // }, [searchedGames, isTopRatedFilter]);
 
   useEffect(() => {
     setSearchedGames(allFilteredGames);
@@ -63,28 +64,60 @@ function Games(): JSX.Element {
     }
   }, [allGamesByCategory]);
 
-  // const searchedGamesHandle = gamesWeb.subscribe(() => {
-  //   const filtered = gamesWeb.getState().games.allFilteredGames;
-  //   setSearchedGames(filtered);
-  // });
-
-  // const searchedGamesByCategoryHandle = gamesWeb.subscribe(() => {
-  //   const filteredCategory = gamesWeb.getState().games.allGamesByCategory;
-  //   console.log("Filtered Games: ", filteredCategory.length);
-  //   setSearchedGamesByCategory(filteredCategory);
-  // });
-
   const topRatedFilterCheck = () => {
-    if (isTopRatedFilter && searchedGames.length === 0) {
-      let gamesToDisplay = isTopRatedFilter
-        ? allGames
-            .slice()
-            .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
-        : allGames;
-      // console.log(gamesToDisplay);
-      setAllGames(gamesToDisplay);
+    if (isTopRatedFilter) {
+      let gamesToDisplay;
+
+      if (searchedGames.length > 0) {
+        gamesToDisplay = searchedGames
+          .slice()
+          .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating));
+        setSearchedGames(gamesToDisplay);
+      } else {
+        gamesToDisplay = allGames
+          .slice()
+          .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating));
+        setAllGames(gamesToDisplay);
+      }
+    } else {
+      if (searchedGames.length > 0) {
+        setSearchedGames(allFilteredGames);
+      } else {
+        setAllGames(allGames);
+      }
     }
   };
+
+  // MINE
+  // const topRatedFilterCheck = () => {
+  //   if (isTopRatedFilter && searchedGames.length === 0) {
+  //     let gamesToDisplay = isTopRatedFilter
+  //       ? allGames
+  //           .slice()
+  //           .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
+  //       : allGames;
+  //     // console.log(gamesToDisplay);
+  //     setAllGames(gamesToDisplay);
+
+  //     if (searchedGames.length > 0) {
+  //       const gamesToDisplay = isTopRatedFilter
+  //         ? searchedGames
+  //             .slice()
+  //             .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
+  //         : searchedGames;
+  //       console.log(gamesToDisplay);
+  //       setSearchedGames(gamesToDisplay);
+  //     }
+  //   } else {
+  //     // If topRatedFilter is false, revert to the original order of allGames
+  //     setAllGames(allGames);
+
+  //     // If searchedGames is not empty, also revert it to the original order
+  //     if (searchedGames.length > 0) {
+  //       setSearchedGames(allFilteredGames);
+  //     }
+  //   }
+  // };
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
