@@ -82,8 +82,6 @@ function Games(): JSX.Element {
     } else {
       if (searchedGames.length > 0) {
         setSearchedGames(allFilteredGames);
-      } else {
-        setAllGames(allGames);
       }
     }
   };
