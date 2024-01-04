@@ -24,6 +24,10 @@ function Games(): JSX.Element {
   const allGamesByCategory = useSelector(
     (state: any) => state.games.allGamesByCategory
   );
+  const selectedCategory = useSelector(
+    (state: any) => state.games.selectedCategory
+  );
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,16 +47,6 @@ function Games(): JSX.Element {
     }
     topRatedFilterCheck();
   }, [isTopRatedFilter]);
-
-  // חיפוש
-  // useEffect(() => {
-  //   if (searchedGames.length > 0 && isTopRatedFilter) {
-  //     const gamesToDisplay = searchedGames
-  //       .slice()
-  //       .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating));
-  //     setSearchedGames(gamesToDisplay);
-  //   }
-  // }, [searchedGames, isTopRatedFilter]);
 
   useEffect(() => {
     setSearchedGames(allFilteredGames);

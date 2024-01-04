@@ -60,7 +60,7 @@ const addGame = async (newGame: Game)=>{
     '${newGame.image_url}'
     );
     `;
-`
+
 //   INSERT INTO video_games
 //   (game_name, release_date, categories, platforms, developer,
 //   publisher, short_description, rating, price, multiplayer,
@@ -79,7 +79,7 @@ const addGame = async (newGame: Game)=>{
 //   '0',
 //   '1',
 //   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBcUJrxP6oGyPGO8Uk_aanQDdUJ3GvCMmq3Fps3_Yl7iDU22AvSxn7uGapJr1sc8Q8ZY0&usqp=CAU');
-//   `;
+//   ;
     
 
 

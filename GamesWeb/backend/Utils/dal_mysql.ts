@@ -16,9 +16,8 @@ const execute = (sql: string): Promise<any> => {
     connection.query(sql, (err, res) => {
       //Huston, we have a problem
       if (err) {
-        reject(err);
         console.log("my sql error : ", err);
-        return;
+        reject(err);
       }
       //no error
       resolve(res);

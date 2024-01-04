@@ -2,14 +2,10 @@ import {
   Autocomplete,
   Button,
   Divider,
-  FormControl,
-  InputLabel,
   List,
   ListItem,
   ListItemText,
-  MenuItem,
   Popover,
-  Select,
   TextField,
 } from "@mui/material";
 import "./SearchFilters.css";
@@ -91,7 +87,6 @@ function SearchFilters(): JSX.Element {
     console.log("Chosen category: ", category);
     setSelectedCategory(category);
     dispatch(selectedCategoryAction(category));
-
     handleCategoryClose();
   };
 

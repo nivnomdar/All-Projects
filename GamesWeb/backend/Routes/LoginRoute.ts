@@ -14,7 +14,7 @@ const loginRouter = express.Router();
         // Call your authentication service to verify the user's credentials
         const user = await checkLogin(email, password);
         if (user) {
-            console.log(user);
+            console.log(user.first_name);
 			const userID = user.user_id;
             console.log("Welcome back userID", userID);
             session.role = "Admin";
