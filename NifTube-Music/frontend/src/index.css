@@ -1,0 +1,11 @@
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  text-align: center;
+  font-style: italic;
+  color: black;
+  background-color: lightgray;
+}
