@@ -1,4 +1,4 @@
-.MainLayout {
+/* .MainLayout {
   height: 100%;
   box-sizing: border-box;
   display: grid;
@@ -18,4 +18,4 @@
 .MainLayout,
 .MainLayout > * {
   border: 1px solid white;
-}
+} */

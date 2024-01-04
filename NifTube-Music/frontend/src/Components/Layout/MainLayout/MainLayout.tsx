@@ -1,15 +1,16 @@
-import MainRoute from "../../Routing/MainRoute/MainRoute";
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+// import MainRoute from "../../Routing/MainRoute/MainRoute";
+// import Footer from "../Footer/Footer";
+// import Header from "../Header/Header";
+// import Home from "../Home/Home";
+// import Menu from "../Menu/Menu";
+// import YouTube from "../YouTube/YouTube";
 import Home from "../Home/Home";
-import Menu from "../Menu/Menu";
-import YouTube from "../YouTube/YouTube";
 import "./MainLayout.css";
 
 function MainLayout(): JSX.Element {
   return (
     <div className="MainLayout">
-      <header>
+      {/* <header>
         <Header />
       </header>
       <aside>
@@ -20,7 +21,10 @@ function MainLayout(): JSX.Element {
       </main>
       <footer>
         <Footer />
-      </footer>
+      </footer> */}
+      <main>
+        <Home />
+      </main>
     </div>
   );
 }
