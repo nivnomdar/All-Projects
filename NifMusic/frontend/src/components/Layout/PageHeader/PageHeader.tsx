@@ -2,6 +2,7 @@ import { useState } from "react";
 import logo from "../../../assets/small-Image .jpeg";
 import { Button } from "../../Buttons/Button";
 import { ArrowLeft, Bell, Camera, Menu, Mic, Search, User } from "lucide-react";
+import { useSidebarContext } from "../../../contexts/SidebarContext";
 
 function PageHeader(): JSX.Element {
   const [showFullWidthSearch, setShowFullWidthSearch] = useState(false);
@@ -9,22 +10,7 @@ function PageHeader(): JSX.Element {
   return (
     <div className="flex gap-10 lg:gap-20 justify-between pt-2 mb-6 mx-4">
       {/* LEFT: Logo and left-modal */}
-      <div
-        className={`gap-4 items-center flex-shrink-0 ${
-          showFullWidthSearch ? "hidden" : "flex"
-        }`}>
-        <Button variant="ghost" size="icon">
-          <Menu />
-        </Button>
-
-        <a href="/">
-          <img
-            src={logo}
-            className="h-6"
-            style={{ width: "100px", height: "auto" }}
-          />
-        </a>
-      </div>
+      <PageHeaderFirstSection hidden={showFullWidthSearch} />
 
       {/* MIDDLE: Search input and button  */}
       <form
@@ -42,7 +28,6 @@ function PageHeader(): JSX.Element {
             <ArrowLeft />
           </Button>
         )}
-
         <div className="flex flex-grow max-w-[600px]">
           <input
             type="search"
@@ -54,7 +39,6 @@ function PageHeader(): JSX.Element {
             <Search />
           </Button>
         </div>
-
         <Button type="button" size="icon" className="flex-shrink-0">
           <Mic />
         </Button>
@@ -89,6 +73,35 @@ function PageHeader(): JSX.Element {
           <User />
         </Button>
       </div>
+    </div>
+  );
+}
+
+type PageHeaderFirstSectionProps = {
+  hidden?: boolean;
+};
+
+export function PageHeaderFirstSection({
+  hidden = false,
+}: PageHeaderFirstSectionProps) {
+  const { toggle } = useSidebarContext();
+
+  return (
+    <div
+      className={`gap-4 items-center flex-shrink-0 ${
+        hidden ? "hidden" : "flex"
+      }`}>
+      <Button onClick={toggle} variant="ghost" size="icon">
+        <Menu />
+      </Button>
+
+      <a href="/">
+        <img
+          src={logo}
+          className="h-6"
+          style={{ width: "100px", height: "auto" }}
+        />
+      </a>
     </div>
   );
 }
